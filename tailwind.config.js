@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: "class",
   theme: {
     container: {
@@ -37,8 +40,8 @@ module.exports = {
 
     extend: {
       backgroundImage: {
-        homeBg: "url('images/background/bg.jpg')",
-        "homeBg-dark": "url('images/background/bg-dark.jpg')",
+        homeBg: "url('../public/images/background/bg.jpg')",
+        "homeBg-dark": "url('../public/images/background/bg-dark.jpg')",
       },
       colors: {
         gray: "#F3F6F6",
