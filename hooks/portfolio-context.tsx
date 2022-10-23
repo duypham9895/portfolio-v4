@@ -6,12 +6,9 @@ const getFromStorage = (key: string) => {
   }
 };
 
-const ISSERVER = typeof window === "undefined";
-
 const initialState = {
   handleTheme: (theme: string): void => {},
   isSelectedTheme: false,
-  // defaultTheme: ISSERVER ? "dark" : localStorage.getItem("theme"),
   defaultTheme: getFromStorage("theme"),
   // handleData,
   // data,

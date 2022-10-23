@@ -23,31 +23,17 @@ const PortfolioProvider = ({ children }: Props) => {
   const [isSelectedTheme, setIsSelectedTheme] = useState(false);
   const [defaultTheme, setDefaultTheme] = useState(getFromStorage("theme"));
 
-  // useEffect(() => {
-  //   const checkUserTheme = () => {
-  //     const theme = getThemeFromLocalStorage();
-  //     if (theme) {
-  //       setDefaultTheme(theme);
-  //     }
-  //   };
-  //   window.addEventListener("storage", checkUserTheme);
-
-  //   return () => {
-  //     window.removeEventListener("storage", checkUserTheme);
-  //   };
-  // }, [getThemeFromLocalStorage]);
-
   // dark and light theme controls
   useEffect(() => {
-    const themeValue = localStorage?.getItem("theme");
+    const themeValue = getFromStorage("theme");
     if (!themeValue) {
       setIsSelectedTheme(false);
-      localStorage.setItem("theme", "light");
+      saveToStorage("theme", "light");
     } else {
       themeValue === "dark" && setIsSelectedTheme(true);
       themeValue === "light" && setIsSelectedTheme(false);
     }
-    localStorage?.getItem("theme") === "dark"
+    getFromStorage("theme") === "dark"
       ? document.documentElement.classList.add("dark")
       : document.documentElement.classList.remove("dark");
   }, []);
@@ -56,12 +42,10 @@ const PortfolioProvider = ({ children }: Props) => {
   const handleTheme = (theme: string): void => {
     if (theme === "light") {
       setIsSelectedTheme(false);
-      // localStorage.setItem("theme", "light");
       saveToStorage("theme", "light");
       setDefaultTheme("light");
     } else {
       setIsSelectedTheme(true);
-      // localStorage.setItem("theme", "dark");
       saveToStorage("theme", "dark");
       setDefaultTheme("dark");
     }
