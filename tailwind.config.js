@@ -37,8 +37,8 @@ module.exports = {
 
     extend: {
       backgroundImage: {
-        homeBg: "url('/src/assets/images/background/bg.jpg')",
-        "homeBg-dark": "url('/src/assets/images/background/bg-dark.jpg')",
+        homeBg: "url('images/background/bg.jpg')",
+        "homeBg-dark": "url('images/background/bg-dark.jpg')",
       },
       colors: {
         gray: "#F3F6F6",
