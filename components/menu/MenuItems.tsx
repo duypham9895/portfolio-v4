@@ -18,8 +18,8 @@ const MENU_ITEMS = [
   },
   {
     id: "06",
-    name: "Experience",
-    link: "/experience",
+    name: "Resume",
+    link: "/resume",
     icon: <CgNotes />,
   },
   {
