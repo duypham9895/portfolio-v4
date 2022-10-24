@@ -17,7 +17,7 @@ const Header = (props: Props) => {
     <div className="z-50">
       <div className="container">
         <header className="flex justify-between items-center fixed top-0 left-0 w-full lg:static z-[1111111111]">
-          <div className=" flex justify-between w-full px-4 lg:px-0 bg-[#F3F6F6] lg:bg-transparent">
+          <div className=" flex justify-between w-full px-4 lg:px-0 bg-[#F3F6F6] lg:bg-transparent dark:bg-black">
             <div className="flex justify-between w-full items-center space-x-4 lg:my-8 my-5">
               {/* website logo  */}
               <Link href="/">
