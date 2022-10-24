@@ -15,3 +15,9 @@ export interface IExperience {
   color: string;
   bg: string;
 }
+
+export interface IContact {
+  phone: string;
+  email: string;
+  address: string;
+}
