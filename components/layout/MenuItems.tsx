@@ -2,7 +2,6 @@ import React from "react";
 import { useRouter } from "next/router";
 
 // Icons
-import { AiOutlineHome } from "react-icons/ai";
 import { FaBlogger, FaCode, FaRegUser } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
 import { RiContactsBookLine } from "react-icons/ri";
@@ -11,12 +10,6 @@ import NavLink from "../UI/NavLink";
 import SwitchTheme from "../UI/SwitchTheme";
 
 const MENU_ITEMS = [
-  {
-    id: "01",
-    name: "Home",
-    link: "/",
-    icon: <AiOutlineHome />,
-  },
   {
     id: "02",
     name: "About",
@@ -51,7 +44,7 @@ const MENU_ITEMS = [
 
 type Props = {
   isOpenMenu: boolean;
-  menuHandler: (value: boolean) => void;
+  menuHandler: (value: React.SetStateAction<boolean>) => void;
 };
 
 const MenuItems = ({ isOpenMenu, menuHandler }: Props) => {
