@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import { FiSun, FiMoon, FiCoffee } from "react-icons/fi";
 
-import MenuItems from "./MenuItems";
+import MenuItems from "../menu/MenuItems";
 import PortfolioContext from "../../hooks/portfolio-context";
 import Link from "next/link";
 import SwitchTheme from "../UI/SwitchTheme";
-import MobileMenuItems from "./MobileMenuItems";
+import MobileMenuItems from "../menu/MobileMenuItems";
 
 type Props = {};
 

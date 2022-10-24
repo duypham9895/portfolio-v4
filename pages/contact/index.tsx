@@ -1,6 +1,6 @@
 import React from "react";
-import DetailContact from "../../components/layout/DetailContact";
-import FormContact from "../../components/layout/FormContact";
+import DetailContact from "../../components/contact/DetailContact";
+import FormContact from "../../components/contact/FormContact";
 
 import HeadTitle from "../../components/UI/HeadTitle";
 import { IContact } from "../../types";
