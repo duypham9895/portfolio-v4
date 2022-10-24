@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
+    "aos": "^2.3.4",
     "date-fns": "^2.29.3",
     "next": "12.3.1",
     "react": "18.2.0",
@@ -19,6 +20,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.4",
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
