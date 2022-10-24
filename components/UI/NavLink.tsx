@@ -1,12 +1,6 @@
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
-
-interface NavLinkProps extends LinkProps {
-  activeClassName: string;
-  inactiveClassName: string;
-  className: string;
-  children?: React.ReactNode;
-}
+import { NavLinkProps } from "../../types";
 
 export default function NavLink({
   href,
