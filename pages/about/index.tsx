@@ -34,7 +34,7 @@ const About = (props: Props) => {
                   {/* personal images for about page  */}
                   <Image
                     className="w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0"
-                    src="/images/about/coldbrew.jpg"
+                    src="/images/about/desk-setup.jpg"
                     alt="about-image"
                     width="330"
                     height="400"
