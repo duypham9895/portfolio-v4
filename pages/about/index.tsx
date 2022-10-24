@@ -8,9 +8,9 @@ import {
 } from "react-icons/fa";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import format from "date-fns/format";
 
 import HeadTitle from "../../components/UI/HeadTitle";
-import AboutCard from "../../components/UI/AboutCard";
 import { IExperience } from "../../types";
 
 type Props = {
@@ -18,13 +18,14 @@ type Props = {
 };
 
 const About = ({ listExperience }: Props) => {
+  const formattedBirth = format(new Date("1999-10-18"), "MMM dd,yyyy");
   return (
     <>
       <HeadTitle title="About" />
       {/* End pageTitle */}
 
       <section>
-        <div className="container lg:rounded-2xl bg-white dark:bg-[#111111]  px-4 sm:px-5 md:px-10 lg:px-20">
+        <div className="container lg:rounded-2xl bg-white dark:bg-[#111111] px-4 sm:px-5 md:px-10 lg:px-20">
           <div data-aos="fade">
             <div className="py-12">
               {/* Page Title */}
@@ -32,7 +33,7 @@ const About = ({ listExperience }: Props) => {
                 About Me
               </h2>
               <div className="grid grid-cols-12 md:gap-10 pt-4 md:pt-[40px] items-center">
-                <div className="col-span-12 md:col-span-4">
+                <div className="col-span-12 md:col-span-4 sm:mb-5">
                   {/* personal images for about page  */}
                   <Image
                     className="w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0"
@@ -42,7 +43,7 @@ const About = ({ listExperience }: Props) => {
                     height="400"
                   />
                 </div>
-                <div className="col-span-12 md:col-span-8 space-y-2.5">
+                <div className="col-span-12 md:col-span-8 space-y-3">
                   {/* About me information */}
                   <div className=" md:mr-12 xl:mr-16">
                     <h3 className="text-4xl font-medium dark:text-white mb-2.5 ">
@@ -51,12 +52,11 @@ const About = ({ listExperience }: Props) => {
                     <p className="text-gray-lite  dark:text-color-910 leading-7">
                       I&apos;m a Junior Software Engineer from Ho Chi Minh,
                       Vietnam, and used a JavaScript as a primary programming
-                      language to develop a software
+                      language to develop a software.
                     </p>
                     <p className="text-gray-lite leading-7 mt-2.5 dark:text-color-910">
-                      My aim is to bring across your message and identity in the
-                      most creative way. I created web design for many famous
-                      brand companies.
+                      My purpose to become a software engineer is to solve a
+                      complex real world issue by my technological knowledge.
                     </p>
                   </div>
 
@@ -65,7 +65,7 @@ const About = ({ listExperience }: Props) => {
                     <h3 className="text-4xl font-medium my-5 dark:text-white">
                       Personal Info
                     </h3>
-                    <div className=" grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                       <div className="flex">
                         <span className="text-oriange dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
                           <FaMobileAlt />
@@ -75,20 +75,7 @@ const About = ({ listExperience }: Props) => {
                             Phone
                           </p>
                           <h6 className="font-medium dark:text-white">
-                            +123 456 7890
-                          </h6>
-                        </div>
-                      </div>
-                      <div className="flex">
-                        <span className="text-oriange-lite dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
-                          <FaMapMarkerAlt />
-                        </span>
-                        <div className="space-y-1">
-                          <p className="text-xs text-gray-lite dark:text-color-910">
-                            Location
-                          </p>
-                          <h6 className="font-medium dark:text-white">
-                            Hong kong china
+                            +84 963 769 049
                           </h6>
                         </div>
                       </div>
@@ -101,10 +88,24 @@ const About = ({ listExperience }: Props) => {
                             Email
                           </p>
                           <h6 className="font-medium dark:text-white">
-                            example@mail.com
+                            phamanhduy.sg@gmail.com
                           </h6>
                         </div>
                       </div>
+                      <div className="flex">
+                        <span className="text-oriange-lite dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
+                          <FaMapMarkerAlt />
+                        </span>
+                        <div className="space-y-1">
+                          <p className="text-xs text-gray-lite dark:text-color-910">
+                            Location
+                          </p>
+                          <h6 className="font-medium dark:text-white">
+                            Ho Chi Minh, Vietnam
+                          </h6>
+                        </div>
+                      </div>
+
                       <div className="flex">
                         <span className="text-color-50 dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
                           <FaRegCalendarAlt />
@@ -114,7 +115,7 @@ const About = ({ listExperience }: Props) => {
                             Birthday
                           </p>
                           <h6 className="font-medium dark:text-white">
-                            May 27, 1990
+                            {formattedBirth}
                           </h6>
                         </div>
                       </div>
@@ -122,18 +123,6 @@ const About = ({ listExperience }: Props) => {
                   </div>
                   {/* End personal information */}
                 </div>
-              </div>
-            </div>
-
-            <div className="  pb-12 ">
-              <h3 className="text-[35px] dark:text-white font-medium pb-5">
-                What I do!
-              </h3>
-              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
-                {/* Experience information  */}
-                {listExperience.map((item) => (
-                  <AboutCard key={item.id} item={item} />
-                ))}
               </div>
             </div>
           </div>
