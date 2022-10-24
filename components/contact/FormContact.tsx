@@ -80,7 +80,7 @@ const FormContact = ({ condition }: Props) => {
           I have got just what you need.
         </span>
         <br />
-        <span className="font-semibold dark:text-white">Lets Talk.</span>
+        <span className="font-semibold dark:text-white">Let&apos;s Talk.</span>
       </h3>
 
       {/* Form Start */}
