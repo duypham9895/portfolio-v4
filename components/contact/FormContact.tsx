@@ -19,7 +19,7 @@ const FormContact = ({ condition }: Props) => {
   const changeEmailHandler = (e: React.FormEvent<HTMLInputElement>) => {
     setEnteredEmail(e.currentTarget.value);
   };
-  const changeMessageHandler = (e: React.FormEvent<HTMLInputElement>) => {
+  const changeMessageHandler = (e: React.FormEvent<HTMLTextAreaElement>) => {
     setEnteredMessage(e.currentTarget.value);
   };
 
@@ -37,10 +37,10 @@ const FormContact = ({ condition }: Props) => {
     }
 
     const sentForm = await emailjs.sendForm(
-      "service_wxd2col",
-      "template_s4jezlq",
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
       form.current,
-      "2s1kQg8f_m8v34xk_"
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     );
 
     if (sentForm.status === 200) {
@@ -54,17 +54,17 @@ const FormContact = ({ condition }: Props) => {
         progress: undefined,
       });
       resetFormInputs();
-      return;
+    } else {
+      toast.error("Ops Message not Sent!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
-    toast.error("Ops Message not Sent!", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
   };
   return (
     <div
@@ -120,8 +120,9 @@ const FormContact = ({ condition }: Props) => {
           </label>
         </div>
         <div className="relative z-0 w-full mb-8 group">
-          <input
-            type="text"
+          <textarea
+            // type="text"
+            rows={3}
             name="message"
             id="message"
             className="block autofill:bg-yellow-200 py-2.5 px-0 w-full text-sm text-gray-lite bg-transparent border-0 border-b-[2px] border-[#B5B5B5] appearance-none dark:text-white dark:border-[#333333] dark:focus:border-[#FF6464] focus:outline-none focus:ring-0 focus:border-[#CA56F2] peer"
