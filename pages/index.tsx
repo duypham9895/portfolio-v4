@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedinIn, FaGithub, FaSkype } from "react-icons/fa";
+import { SiZalo } from "react-icons/si";
 
 import HeadTitle from "../components/UI/HeadTitle";
 
@@ -50,6 +51,13 @@ const Home: NextPage = () => {
             <a target="_blank" rel="noopener noreferrer">
               <span className="socialbtn text-[#000] dark:text-[#00aff0] dark:hover:text-white">
                 <FaSkype />
+              </span>
+            </a>
+          </Link>
+          <Link href="https://zalo.me/0963769049" passHref>
+            <a target="_blank" rel="noopener noreferrer">
+              <span className="socialbtn text-[#000] dark:text-[#0068FF] dark:hover:text-white">
+                <SiZalo />
               </span>
             </a>
           </Link>
