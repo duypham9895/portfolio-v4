@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
-import { FiSun, FiMoon, FiCoffee } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiCoffee } from "react-icons/fi";
 
 import MenuItems from "../menu/MenuItems";
-import PortfolioContext from "../../hooks/portfolio-context";
 import Link from "next/link";
 import SwitchTheme from "../UI/SwitchTheme";
 import MobileMenuItems from "../menu/MobileMenuItems";
@@ -11,7 +10,6 @@ type Props = {};
 
 const Header = (props: Props) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const { isSelectedTheme, handleTheme } = useContext(PortfolioContext);
 
   return (
     <div className="z-50">
