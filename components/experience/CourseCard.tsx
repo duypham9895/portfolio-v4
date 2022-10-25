@@ -7,12 +7,10 @@ import Card from "./Card";
 import { formatPeriodDate } from "../../utils/date";
 
 type Props = {
-  defaultTheme: string;
   course: ICourse;
 };
 
 const CourseCard = ({
-  defaultTheme,
   course: {
     name,
     organization,
@@ -30,7 +28,7 @@ const CourseCard = ({
   );
 
   return (
-    <Card defaultTheme={defaultTheme}>
+    <Card>
       <span className="text-tiny text-gray-lite dark:text-[#b7b7b7]">
         {formatDateCourse}
       </span>

@@ -6,20 +6,15 @@ import ExperienceCard from "./ExperienceCard";
 import Title from "./Title";
 
 type Props = {
-  defaultTheme: string;
   listExperience: IExperience[];
 };
 
-const ExperienceCards = ({ defaultTheme, listExperience }: Props) => {
+const ExperienceCards = ({ listExperience }: Props) => {
   return (
     <>
       <Title content="Work Experience" icon={MdOutlineBusinessCenter} />
       {listExperience.map((experience) => (
-        <ExperienceCard
-          key={experience.id}
-          defaultTheme={defaultTheme}
-          experience={experience}
-        />
+        <ExperienceCard key={experience.id} experience={experience} />
       ))}
     </>
   );

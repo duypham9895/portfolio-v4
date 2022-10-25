@@ -6,20 +6,15 @@ import CourseCard from "./CourseCard";
 import Title from "./Title";
 
 type Props = {
-  defaultTheme: string;
   courses: ICourse[];
 };
 
-const CourseCards = ({ defaultTheme, courses }: Props) => {
+const CourseCards = ({ courses }: Props) => {
   return (
     <>
       <Title content="Courses" icon={FaAward} />
       {courses.map((course) => (
-        <CourseCard
-          key={course.id}
-          defaultTheme={defaultTheme}
-          course={course}
-        />
+        <CourseCard key={course.id} course={course} />
       ))}
     </>
   );

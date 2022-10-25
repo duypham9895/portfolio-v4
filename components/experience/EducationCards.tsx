@@ -6,20 +6,15 @@ import { IEducation } from "../../types";
 import EducationCard from "./EducationCard";
 
 type Props = {
-  defaultTheme: string;
   educations: IEducation[];
 };
 
-const EducationCards = ({ defaultTheme, educations }: Props) => {
+const EducationCards = ({ educations }: Props) => {
   return (
     <>
       <Title content="Education" icon={MdOutlineSchool} />
       {educations.map((education) => (
-        <EducationCard
-          key={education.id}
-          defaultTheme={defaultTheme}
-          education={education}
-        />
+        <EducationCard key={education.id} education={education} />
       ))}
     </>
   );

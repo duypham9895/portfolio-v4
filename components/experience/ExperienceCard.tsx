@@ -5,12 +5,10 @@ import Card from "./Card";
 import { formatPeriodDate } from "../../utils/date";
 
 type Props = {
-  defaultTheme: string;
   experience: IExperience;
 };
 
 const ExperienceCard = ({
-  defaultTheme,
   experience: { title, companyName, startDate, endDate, summary },
 }: Props) => {
   const formatDateWork = formatPeriodDate(
@@ -21,7 +19,7 @@ const ExperienceCard = ({
   );
 
   return (
-    <Card defaultTheme={defaultTheme}>
+    <Card>
       <span className="text-tiny text-gray-lite dark:text-[#b7b7b7]">
         {formatDateWork}
       </span>

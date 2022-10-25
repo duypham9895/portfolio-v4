@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { ICourse, IEducation, IExperience } from "../../types";
-import PortfolioContext from "../../hooks/portfolio-context";
 import HeadTitle from "../../components/UI/HeadTitle";
 import CourseCards from "../../components/experience/CourseCards";
 import EducationCards from "../../components/experience/EducationCards";
@@ -14,7 +13,6 @@ type Props = {
 };
 
 const Experience = ({ courses, listExperience, educations }: Props) => {
-  const { defaultTheme } = useContext(PortfolioContext);
   return (
     <>
       <HeadTitle title="Resume" />
@@ -27,18 +25,9 @@ const Experience = ({ courses, listExperience, educations }: Props) => {
                 Resume
               </h2>
               <div className="pt-4 md:pt-[40px]">
-                <ExperienceCards
-                  defaultTheme={defaultTheme as string}
-                  listExperience={listExperience}
-                />
-                <CourseCards
-                  defaultTheme={defaultTheme as string}
-                  courses={courses}
-                />
-                <EducationCards
-                  defaultTheme={defaultTheme as string}
-                  educations={educations}
-                />
+                <ExperienceCards listExperience={listExperience} />
+                <CourseCards courses={courses} />
+                <EducationCards educations={educations} />
               </div>
             </div>
           </div>
