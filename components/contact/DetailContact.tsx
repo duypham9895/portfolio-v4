@@ -15,7 +15,7 @@ const DetailContact = ({ contact: { phone, email, address } }: Props) => {
   return (
     <div className="w-full lg:w-[50%] xl:w-[40%] space-y-6">
       {/* Begin Phone */}
-      <div className="flex flex-row flex-nowrap dark:bg-transparent p-[30px] bg-[#FFE5E5] dark:bg-[#212425] border-[#A6A6A6] gap-2 rounded-xl ">
+      <div className="flex flex-row flex-nowrap dark:bg-transparent p-[30px] bg-[#FFE5E5] dark:bg-[#212425] border-[#A6A6A6] dark:border-[#4f4f4f] dark:border-2 gap-2 rounded-xl">
         <span className="w-8 mt-1">
           <span className="text-4xl text-oriange ">
             <FaMobileAlt />
@@ -29,7 +29,7 @@ const DetailContact = ({ contact: { phone, email, address } }: Props) => {
       {/* End Phone */}
 
       {/* Begin Email */}
-      <div className="flex flex-row flex-nowrap dark:bg-transparent p-[30px] bg-[#EEFBFF] dark:bg-[#212425] border-[#A6A6A6] gap-2 rounded-xl ">
+      <div className="flex flex-row flex-nowrap dark:bg-transparent p-[30px] bg-[#EEFBFF] dark:bg-[#212425] border-[#A6A6A6] dark:border-[#4f4f4f] dark:border-2 gap-2 rounded-xl">
         <span className="w-8 mt-1">
           <span className="text-4xl text-green">
             <FaEnvelopeOpenText />
@@ -43,7 +43,7 @@ const DetailContact = ({ contact: { phone, email, address } }: Props) => {
       {/* End Email */}
 
       {/* Begin Address */}
-      <div className="flex flex-row flex-nowrap dark:bg-transparent p-[30px] bg-[#FAEFFD] dark:bg-[#212425] border-[#A6A6A6] gap-2 rounded-xl ">
+      <div className="flex flex-row flex-nowrap dark:bg-transparent p-[30px] bg-[#FAEFFD] dark:bg-[#212425] border-[#A6A6A6] dark:border-[#4f4f4f] dark:border-2 gap-2 rounded-xl">
         <span className="w-8 mt-1">
           <span className="text-4xl text-oriange-lite">
             <FaMapMarkerAlt />
