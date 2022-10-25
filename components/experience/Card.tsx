@@ -11,7 +11,7 @@ const Card = ({ defaultTheme, children }: Props) => {
       style={{
         background: `${defaultTheme === "dark" ? "transparent" : "#EEF5FA"}`,
       }}
-      className="py-4 pl-5 pr-3 space-y-2 mb-6 rounded-lg  dark:border-[#4f4f4f] dark:border-2"
+      className="py-4 pl-5 pr-3 space-y-2 mb-6 rounded-lg  dark:border-[#4f4f4f]"
     >
       {children}
     </div>
