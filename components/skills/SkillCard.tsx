@@ -9,7 +9,7 @@ type Props = {
 
 const SkillCard = ({ skill: { name, imageUrl, experience } }: Props) => {
   return (
-    <div className="group justify-self-center relative flex cursor-pointer">
+    <div className="group justify-self-center relative flex">
       <div className="relative object-cover h-20 w-20 md:h-24 md:w-24 xl:h-28 xl:w-28 p-1.5 filter group-hover:grayscale transition duration-300 ease-in-out">
         <Image
           src={imageUrl}
