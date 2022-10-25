@@ -8,6 +8,14 @@ export interface NavLinkProps extends LinkProps {
   children?: React.ReactNode;
 }
 
+export interface IAbout {
+  phone: string;
+  email: string;
+  introduction: string[];
+  address: string;
+  addressUrl: string;
+  birthDate: string;
+}
 export interface IContact {
   phone: string;
   email: string;

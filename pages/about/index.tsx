@@ -11,11 +11,16 @@ import "slick-carousel/slick/slick.css";
 import format from "date-fns/format";
 
 import HeadTitle from "../../components/UI/HeadTitle";
+import { IAbout } from "../../types";
 
-type Props = {};
+type Props = {
+  about: IAbout;
+};
 
-const About = (props: Props) => {
-  const formattedBirth = format(new Date("1999-10-18"), "MMM dd,yyyy");
+const About = ({
+  about: { phone, email, address, addressUrl, birthDate, introduction },
+}: Props) => {
+  const formattedBirth = format(new Date(birthDate), "MMM dd,yyyy");
   return (
     <>
       <HeadTitle title="About" />
@@ -34,7 +39,7 @@ const About = (props: Props) => {
                   {/* personal images for about page  */}
                   <Image
                     className="w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0"
-                    src="/images/about/desk-setup.jpg"
+                    src="/images/about/avatar.jpg"
                     alt="about-image"
                     width="330"
                     height="400"
@@ -46,15 +51,11 @@ const About = (props: Props) => {
                     <h3 className="text-4xl font-medium dark:text-white mb-2.5 ">
                       Who Am I?
                     </h3>
-                    <p className="text-gray-lite  dark:text-color-910 leading-7">
-                      I&apos;m a Junior Software Engineer from Ho Chi Minh,
-                      Vietnam, and used a JavaScript as a primary programming
-                      language to develop a software.
-                    </p>
-                    <p className="text-gray-lite leading-7 mt-2.5 dark:text-color-910">
-                      My purpose to become a software engineer is to solve a
-                      complex real world issue by my technological knowledge.
-                    </p>
+                    <ul className="text-gray-lite dark:text-color-910 leading-7 space-y-3">
+                      {introduction.map((content, i) => (
+                        <li key={i}>{content}</li>
+                      ))}
+                    </ul>
                   </div>
 
                   {/* personal information */}
@@ -67,40 +68,45 @@ const About = (props: Props) => {
                         <span className="text-oriange dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
                           <FaMobileAlt />
                         </span>
-                        <div className="space-y-1">
+                        <a className="space-y-1" href={`tel:${phone}`}>
                           <p className="text-xs text-gray-lite dark:text-color-910">
                             Phone
                           </p>
                           <h6 className="font-medium dark:text-white">
-                            +84 963 769 049
+                            {phone}
                           </h6>
-                        </div>
+                        </a>
                       </div>
                       <div className="flex">
                         <span className="text-green dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
                           <FaEnvelopeOpenText />
                         </span>
-                        <div className="space-y-1">
+                        <a className="space-y-1" href={`mailto:${email}`}>
                           <p className="text-xs text-gray-lite dark:text-color-910">
                             Email
                           </p>
                           <h6 className="font-medium dark:text-white">
-                            phamanhduy.sg@gmail.com
+                            {email}
                           </h6>
-                        </div>
+                        </a>
                       </div>
                       <div className="flex">
                         <span className="text-oriange-lite dark:bg-color-990 shadow-icon mr-2.5 flex items-center justify-center rounded-md text-2xl w-12 text-">
                           <FaMapMarkerAlt />
                         </span>
-                        <div className="space-y-1">
+                        <a
+                          className="space-y-1"
+                          href={addressUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           <p className="text-xs text-gray-lite dark:text-color-910">
                             Location
                           </p>
                           <h6 className="font-medium dark:text-white">
-                            Ho Chi Minh, Vietnam
+                            {address}
                           </h6>
-                        </div>
+                        </a>
                       </div>
 
                       <div className="flex">
@@ -128,5 +134,26 @@ const About = (props: Props) => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const about: IAbout = {
+    phone: "+84 963 769 049",
+    email: "phamanhduy.sg@gmail.com",
+    address: "Ho Chi Minh, Vietnam",
+    addressUrl:
+      "https://www.google.com/maps/search/?api=1&query=Ho%20Chi%20Minh%20City&query_place_id=ChIJ0T2NLikpdTERKxE8d61aX_E",
+    birthDate: new Date("1999-10-18").toISOString(),
+    introduction: [
+      "I'm a Junior Software Engineer from Ho Chi Minh, Vietnam, and I used a JavaScript as a primary programming language to develop software.",
+      "My purpose in becoming a software engineer is to solve a complex real-world issue with my technological knowledge.",
+      "I am a coffee-lover, especially cold brew. And I am interested in setting up my desk at home and in the office. I believe it will affect my productivity, concentration, and performance.",
+    ],
+  };
+  return {
+    props: {
+      about,
+    },
+  };
+}
 
 export default About;
