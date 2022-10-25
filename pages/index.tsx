@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub, FaSkype } from "react-icons/fa";
 
 import HeadTitle from "../components/UI/HeadTitle";
 
@@ -43,6 +43,13 @@ const Home: NextPage = () => {
             <a target="_blank" rel="noopener noreferrer">
               <span className="socialbtn text-[#000] dark:text-[#cdd9e5] dark:hover:text-white">
                 <FaGithub />
+              </span>
+            </a>
+          </Link>
+          <Link href="https://join.skype.com/invite/BGhQpWTWe0aH" passHref>
+            <a target="_blank" rel="noopener noreferrer">
+              <span className="socialbtn text-[#000] dark:text-[#00aff0] dark:hover:text-white">
+                <FaSkype />
               </span>
             </a>
           </Link>
