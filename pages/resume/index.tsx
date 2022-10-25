@@ -23,10 +23,10 @@ const Experience = ({ courses, listExperience, educations }: Props) => {
           <div data-aos="fade">
             <div className="py-12">
               {/*page title here */}
-              <h2 className="after-effect after:left-52 mb-[40px] mt-12 lg:mt-0">
+              <h2 className="after-effect after:left-52 mt-12 lg:mt-0">
                 Resume
               </h2>
-              <div className="">
+              <div className="pt-4 md:pt-[40px]">
                 <ExperienceCards
                   defaultTheme={defaultTheme as string}
                   listExperience={listExperience}
