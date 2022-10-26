@@ -49,14 +49,14 @@ const Home: NextPage = () => {
           </Link>
           <Link href="https://join.skype.com/invite/BGhQpWTWe0aH" passHref>
             <a target="_blank" rel="noopener noreferrer">
-              <span className="socialbtn text-[#000] dark:text-[#00aff0] dark:hover:text-white">
+              <span className="socialbtn text-[#00aff0]">
                 <FaSkype />
               </span>
             </a>
           </Link>
           <Link href="https://zalo.me/0963769049" passHref>
             <a target="_blank" rel="noopener noreferrer">
-              <span className="socialbtn text-[#000] dark:text-[#0068FF] dark:hover:text-white">
+              <span className="socialbtn text-[#0068FF]">
                 <SiZalo />
               </span>
             </a>
