@@ -40,6 +40,46 @@ const Experience = ({ courses, listExperience, educations }: Props) => {
 export async function getStaticProps() {
   const courses: ICourse[] = [
     {
+      id: new Date(2022, 10, 1).toISOString(),
+      startDate: new Date(2022, 10, 1).toISOString(),
+      endDate: null,
+      name: "React (Basic)",
+      organization: "HackerRank",
+      credentialId: null,
+      credentialUrl:
+        "https://www.hackerrank.com/certificates/iframe/28ae560526c3",
+    },
+    {
+      id: new Date(2022, 10, 1).toISOString(),
+      startDate: new Date(2022, 10, 1).toISOString(),
+      endDate: null,
+      name: "Node (Basic)",
+      organization: "HackerRank",
+      credentialId: null,
+      credentialUrl:
+        "https://www.hackerrank.com/certificates/iframe/b5c0fe3d4373",
+    },
+    {
+      id: new Date(2022, 10, 1).toISOString(),
+      startDate: new Date(2022, 10, 1).toISOString(),
+      endDate: null,
+      name: "JavaScript (Intermediate)",
+      organization: "HackerRank",
+      credentialId: null,
+      credentialUrl:
+        "https://www.hackerrank.com/certificates/iframe/3f36d699fb65",
+    },
+    {
+      id: new Date(2022, 10, 1).toISOString(),
+      startDate: new Date(2022, 10, 1).toISOString(),
+      endDate: null,
+      name: "JavaScript (Basic)",
+      organization: "HackerRank",
+      credentialId: null,
+      credentialUrl:
+        "https://www.hackerrank.com/certificates/iframe/af348e134141",
+    },
+    {
       id: "1",
       startDate: new Date(2022, 9, 1).toISOString(),
       endDate: null,

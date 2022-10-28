@@ -28,7 +28,7 @@ export interface ICourse {
   organization: string;
   startDate: string;
   endDate: string | null;
-  credentialId: string;
+  credentialId: string | null;
   credentialUrl: string;
 }
 
