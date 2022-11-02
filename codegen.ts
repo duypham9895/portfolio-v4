@@ -1,4 +1,4 @@
-import got from "got";
+import axios from "axios";
 import dotenv from "dotenv";
 import path from "path";
 
@@ -7,20 +7,19 @@ import { IResponseToken } from "./types";
 dotenv.config({ path: path.resolve(__dirname, ".env.local") });
 
 const fetchToken = async (): Promise<string> => {
-  const { body } = await got.post<IResponseToken>(
+  const { data } = await axios.post<IResponseToken>(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/auth/local`,
     {
-      responseType: "json",
+      identifier: `${process.env.NEXT_PUBLIC_STRAPI_IDENTIFIER}`,
+      password: `${process.env.NEXT_PUBLIC_STRAPI_PASSWORD}`,
+    },
+    {
       headers: {
         "Content-Type": "application/json",
       },
-      json: {
-        identifier: `${process.env.NEXT_PUBLIC_STRAPI_IDENTIFIER}`,
-        password: `${process.env.NEXT_PUBLIC_STRAPI_PASSWORD}`,
-      },
     }
   );
-  return body.jwt;
+  return data.jwt;
 };
 
 export default (async () => {
