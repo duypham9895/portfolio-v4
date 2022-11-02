@@ -1,0 +1,20 @@
+query about {
+  contacts {
+    data {
+      attributes {
+        phone
+        email
+        address
+        address_url
+      }
+    }
+  }
+  personal(id: 1) {
+    data {
+      attributes {
+        birthday
+        description
+      }
+    }
+  }
+}

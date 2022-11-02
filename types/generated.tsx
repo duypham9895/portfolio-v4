@@ -1440,16 +1440,135 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export const GetPersonalDocument = gql`
-  query getPersonal {
+export const AboutDocument = gql`
+  query about {
+    contacts {
+      data {
+        attributes {
+          phone
+          email
+          address
+          address_url
+        }
+      }
+    }
+    personal(id: 1) {
+      data {
+        attributes {
+          birthday
+          description
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useAboutQuery__
+ *
+ * To run a query within a React component, call `useAboutQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAboutQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAboutQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAboutQuery(
+  baseOptions?: Apollo.QueryHookOptions<AboutQuery, AboutQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AboutQuery, AboutQueryVariables>(
+    AboutDocument,
+    options
+  );
+}
+export function useAboutLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<AboutQuery, AboutQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AboutQuery, AboutQueryVariables>(
+    AboutDocument,
+    options
+  );
+}
+export type AboutQueryHookResult = ReturnType<typeof useAboutQuery>;
+export type AboutLazyQueryHookResult = ReturnType<typeof useAboutLazyQuery>;
+export type AboutQueryResult = Apollo.QueryResult<
+  AboutQuery,
+  AboutQueryVariables
+>;
+export const ContactsDocument = gql`
+  query contacts {
+    contacts {
+      data {
+        attributes {
+          phone
+          email
+          address
+          address_url
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useContactsQuery__
+ *
+ * To run a query within a React component, call `useContactsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useContactsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useContactsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useContactsQuery(
+  baseOptions?: Apollo.QueryHookOptions<ContactsQuery, ContactsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ContactsQuery, ContactsQueryVariables>(
+    ContactsDocument,
+    options
+  );
+}
+export function useContactsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ContactsQuery,
+    ContactsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ContactsQuery, ContactsQueryVariables>(
+    ContactsDocument,
+    options
+  );
+}
+export type ContactsQueryHookResult = ReturnType<typeof useContactsQuery>;
+export type ContactsLazyQueryHookResult = ReturnType<
+  typeof useContactsLazyQuery
+>;
+export type ContactsQueryResult = Apollo.QueryResult<
+  ContactsQuery,
+  ContactsQueryVariables
+>;
+export const HomepageDocument = gql`
+  query homepage {
     personal(id: 1) {
       data {
         id
         attributes {
           full_name
           title
-          birthday
-          description
           socials {
             data {
               attributes {
@@ -1465,55 +1584,101 @@ export const GetPersonalDocument = gql`
 `;
 
 /**
- * __useGetPersonalQuery__
+ * __useHomepageQuery__
  *
- * To run a query within a React component, call `useGetPersonalQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetPersonalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useHomepageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomepageQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetPersonalQuery({
+ * const { data, loading, error } = useHomepageQuery({
  *   variables: {
  *   },
  * });
  */
-export function useGetPersonalQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetPersonalQuery,
-    GetPersonalQueryVariables
-  >
+export function useHomepageQuery(
+  baseOptions?: Apollo.QueryHookOptions<HomepageQuery, HomepageQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetPersonalQuery, GetPersonalQueryVariables>(
-    GetPersonalDocument,
+  return Apollo.useQuery<HomepageQuery, HomepageQueryVariables>(
+    HomepageDocument,
     options
   );
 }
-export function useGetPersonalLazyQuery(
+export function useHomepageLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetPersonalQuery,
-    GetPersonalQueryVariables
+    HomepageQuery,
+    HomepageQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetPersonalQuery, GetPersonalQueryVariables>(
-    GetPersonalDocument,
+  return Apollo.useLazyQuery<HomepageQuery, HomepageQueryVariables>(
+    HomepageDocument,
     options
   );
 }
-export type GetPersonalQueryHookResult = ReturnType<typeof useGetPersonalQuery>;
-export type GetPersonalLazyQueryHookResult = ReturnType<
-  typeof useGetPersonalLazyQuery
+export type HomepageQueryHookResult = ReturnType<typeof useHomepageQuery>;
+export type HomepageLazyQueryHookResult = ReturnType<
+  typeof useHomepageLazyQuery
 >;
-export type GetPersonalQueryResult = Apollo.QueryResult<
-  GetPersonalQuery,
-  GetPersonalQueryVariables
+export type HomepageQueryResult = Apollo.QueryResult<
+  HomepageQuery,
+  HomepageQueryVariables
 >;
-export type GetPersonalQueryVariables = Exact<{ [key: string]: never }>;
+export type AboutQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetPersonalQuery = {
+export type AboutQuery = {
+  __typename?: "Query";
+  contacts?: {
+    __typename?: "ContactEntityResponseCollection";
+    data: Array<{
+      __typename?: "ContactEntity";
+      attributes?: {
+        __typename?: "Contact";
+        phone?: string | null;
+        email?: string | null;
+        address?: string | null;
+        address_url?: string | null;
+      } | null;
+    }>;
+  } | null;
+  personal?: {
+    __typename?: "PersonalEntityResponse";
+    data?: {
+      __typename?: "PersonalEntity";
+      attributes?: {
+        __typename?: "Personal";
+        birthday?: any | null;
+        description?: string | null;
+      } | null;
+    } | null;
+  } | null;
+};
+
+export type ContactsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ContactsQuery = {
+  __typename?: "Query";
+  contacts?: {
+    __typename?: "ContactEntityResponseCollection";
+    data: Array<{
+      __typename?: "ContactEntity";
+      attributes?: {
+        __typename?: "Contact";
+        phone?: string | null;
+        email?: string | null;
+        address?: string | null;
+        address_url?: string | null;
+      } | null;
+    }>;
+  } | null;
+};
+
+export type HomepageQueryVariables = Exact<{ [key: string]: never }>;
+
+export type HomepageQuery = {
   __typename?: "Query";
   personal?: {
     __typename?: "PersonalEntityResponse";
@@ -1524,8 +1689,6 @@ export type GetPersonalQuery = {
         __typename?: "Personal";
         full_name?: string | null;
         title?: string | null;
-        birthday?: any | null;
-        description?: string | null;
         socials?: {
           __typename?: "SocialRelationResponseCollection";
           data: Array<{

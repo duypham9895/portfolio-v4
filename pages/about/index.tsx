@@ -12,15 +12,21 @@ import format from "date-fns/format";
 
 import HeadTitle from "../../components/UI/HeadTitle";
 import { IAbout } from "../../types";
+import {
+  AboutDocument,
+  AboutQuery,
+  AboutQueryVariables,
+} from "../../types/generated";
+import { client } from "../../graphql";
 
 type Props = {
   about: IAbout;
 };
 
 const About = ({
-  about: { phone, email, address, addressUrl, birthDate, introduction },
+  about: { phone, email, address, addressUrl, birthday, description },
 }: Props) => {
-  const formattedBirth = format(new Date(birthDate), "MMM dd,yyyy");
+  const formattedBirth = format(new Date(birthday), "MMM dd,yyyy");
   return (
     <>
       <HeadTitle title="About" />
@@ -52,7 +58,7 @@ const About = ({
                       Who Am I?
                     </h3>
                     <ul className="text-gray-lite dark:text-color-910 leading-7 space-y-3">
-                      {introduction.map((content, i) => (
+                      {description.map((content, i) => (
                         <li key={i}>{content}</li>
                       ))}
                     </ul>
@@ -136,22 +142,29 @@ const About = ({
 };
 
 export async function getStaticProps() {
-  const about: IAbout = {
-    phone: "+84 963 769 049",
-    email: "phamanhduy.sg@gmail.com",
-    address: "Ho Chi Minh, Vietnam",
-    addressUrl:
-      "https://www.google.com/maps/search/?api=1&query=Ho%20Chi%20Minh%20City&query_place_id=ChIJ0T2NLikpdTERKxE8d61aX_E",
-    birthDate: new Date("1999-10-18").toISOString(),
-    introduction: [
-      "I'm a Junior Software Engineer from Ho Chi Minh, Vietnam, and I used a JavaScript as a primary programming language to develop software.",
-      "My purpose in becoming a software engineer is to solve a complex real-world issue with my technological knowledge.",
-      "I am a coffee-lover, especially cold brew. And I am interested in setting up my desk at home and in the office. I believe it will affect my productivity, concentration, and performance.",
-    ],
-  };
+  const { data } = await client.query<AboutQuery, AboutQueryVariables>({
+    query: AboutDocument,
+  });
+
+  const {
+    phone,
+    email,
+    address,
+    address_url: addressUrl,
+  } = data.contacts?.data[0].attributes || {};
+
+  const { birthday, description } = data.personal?.data?.attributes || {};
+
   return {
     props: {
-      about,
+      about: {
+        phone,
+        email,
+        address,
+        addressUrl,
+        birthday,
+        description: description?.split("\n"),
+      },
     },
   };
 }

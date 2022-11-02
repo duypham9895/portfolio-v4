@@ -7,9 +7,9 @@ import HeadTitle from "../components/UI/HeadTitle";
 import { client } from "../graphql";
 import { TITLE_SOCIAL } from "../types/enum";
 import {
-  GetPersonalDocument,
-  GetPersonalQuery,
-  GetPersonalQueryVariables,
+  HomepageDocument,
+  HomepageQuery,
+  HomepageQueryVariables,
 } from "../types/generated";
 
 type Social = { [title: string]: string };
@@ -90,15 +90,12 @@ const Home = ({ fullName, title, social }: Props) => {
 };
 
 export async function getStaticProps() {
-  const { data: fetchedPersonal } = await client.query<
-    GetPersonalQuery,
-    GetPersonalQueryVariables
-  >({
-    query: GetPersonalDocument,
+  const { data } = await client.query<HomepageQuery, HomepageQueryVariables>({
+    query: HomepageDocument,
   });
 
   // Extract & Transform data
-  const personal = fetchedPersonal.personal?.data?.attributes;
+  const personal = data.personal?.data?.attributes;
   const { full_name: fullName, title } = personal || {};
 
   const social: Social = {};

@@ -11,15 +11,16 @@ export interface NavLinkProps extends LinkProps {
 export interface IAbout {
   phone: string;
   email: string;
-  introduction: string[];
   address: string;
   addressUrl: string;
-  birthDate: string;
+  birthday: string;
+  description: string[];
 }
 export interface IContact {
   phone: string;
   email: string;
   address: string;
+  addressUrl: string;
 }
 
 export interface ICourse {
