@@ -1,0 +1,19 @@
+query skills {
+  skills(pagination: { pageSize: 20 }, sort: ["id"]) {
+    data {
+      id
+      attributes {
+        title
+        title
+        experience_years
+        image {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

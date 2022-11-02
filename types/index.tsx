@@ -52,10 +52,9 @@ export interface IEducation {
 
 export interface ISkill {
   id: string;
-  imageUrl: string;
   name: string;
-  experience: number;
-  bgDark?: string;
+  experienceYears: number;
+  imageUrl: string;
 }
 
 export interface IResponseToken {

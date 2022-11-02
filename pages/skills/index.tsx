@@ -4,6 +4,12 @@ import { IoLogoJavascript } from "react-icons/io";
 import { ISkill } from "../../types";
 import HeadTitle from "../../components/UI/HeadTitle";
 import SkillCard from "../../components/skills/SkillCard";
+import { client } from "../../graphql";
+import {
+  SkillsDocument,
+  SkillsQuery,
+  SkillsQueryVariables,
+} from "../../types/generated";
 
 type Props = {
   skills: ISkill[];
@@ -42,99 +48,25 @@ const Skills = ({ skills }: Props) => {
 };
 
 export async function getStaticProps() {
-  const skills: ISkill[] = [
-    {
-      id: "1",
-      imageUrl: "/images/skills/javascript.svg",
-      name: "JavaScript",
-      experience: 2,
-    },
-    {
-      id: "2",
-      imageUrl: "/images/skills/nodejs-icon.svg",
-      name: "Node.js",
-      experience: 2,
-    },
-    {
-      id: "3",
-      imageUrl: "/images/skills/nestjs.svg",
-      name: "NestJS",
-      experience: 1,
-    },
-    {
-      id: "4",
-      imageUrl: "/images/skills/nextjs.svg",
-      name: "Next.js",
-      experience: 0,
-      bgDark: "white",
-    },
-    {
-      id: "5",
-      imageUrl: "/images/skills/typescript-icon.svg",
-      name: "TypeScript",
-      experience: 1,
-    },
-    {
-      id: "6",
-      imageUrl: "/images/skills/react.svg",
-      name: "React",
-      experience: 0,
-    },
-    {
-      id: "7",
-      imageUrl: "/images/skills/redux.svg",
-      name: "Redux",
-      experience: 0,
-    },
-    {
-      id: "15",
-      imageUrl: "/images/skills/jest.svg",
-      name: "Jest",
-      experience: 1,
-    },
-    {
-      id: "8",
-      imageUrl: "/images/skills/python.svg",
-      name: "Python",
-      experience: 1,
-    },
-    {
-      id: "9",
-      imageUrl: "/images/skills/graphql.svg",
-      name: "GraphQL",
-      experience: 1.5,
-    },
-    {
-      id: "10",
-      imageUrl: "/images/skills/postgresql.svg",
-      name: "PostgreSQL",
-      experience: 1.5,
-    },
-    {
-      id: "11",
-      imageUrl: "/images/skills/git-icon.svg",
-      name: "Git",
-      experience: 2,
-    },
-    {
-      id: "12",
-      imageUrl: "/images/skills/aws.svg",
-      name: "AWS",
-      experience: 2,
-    },
-    {
-      id: "13",
-      imageUrl: "/images/skills/serverless.svg",
-      name: "Serverless",
-      experience: 1.5,
-    },
-    {
-      id: "14",
-      imageUrl: "/images/skills/tailwindcss-icon.svg",
-      name: "Tailwind",
-      experience: 0,
-    },
-  ];
+  const { data } = await client.query<SkillsQuery, SkillsQueryVariables>({
+    query: SkillsDocument,
+  });
+
+  const skills = data.skills?.data.map(({ id, attributes }) => {
+    const {
+      title,
+      experience_years: experienceYears,
+      image,
+    } = attributes || {};
+    return {
+      id,
+      title,
+      experienceYears,
+      imageUrl: image?.data?.attributes?.url,
+    };
+  });
+
+  console.log(skills?.length);
   return {
     props: {
       skills,

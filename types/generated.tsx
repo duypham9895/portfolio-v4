@@ -1561,8 +1561,8 @@ export type ContactsQueryResult = Apollo.QueryResult<
   ContactsQuery,
   ContactsQueryVariables
 >;
-export const HomepageDocument = gql`
-  query homepage {
+export const HomeDocument = gql`
+  query home {
     personal(id: 1) {
       data {
         id
@@ -1584,48 +1584,98 @@ export const HomepageDocument = gql`
 `;
 
 /**
- * __useHomepageQuery__
+ * __useHomeQuery__
  *
- * To run a query within a React component, call `useHomepageQuery` and pass it any options that fit your needs.
- * When your component renders, `useHomepageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useHomeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useHomeQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useHomepageQuery({
+ * const { data, loading, error } = useHomeQuery({
  *   variables: {
  *   },
  * });
  */
-export function useHomepageQuery(
-  baseOptions?: Apollo.QueryHookOptions<HomepageQuery, HomepageQueryVariables>
+export function useHomeQuery(
+  baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<HomepageQuery, HomepageQueryVariables>(
-    HomepageDocument,
+  return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options);
+}
+export function useHomeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<HomeQuery, HomeQueryVariables>(
+    HomeDocument,
     options
   );
 }
-export function useHomepageLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    HomepageQuery,
-    HomepageQueryVariables
-  >
+export type HomeQueryHookResult = ReturnType<typeof useHomeQuery>;
+export type HomeLazyQueryHookResult = ReturnType<typeof useHomeLazyQuery>;
+export type HomeQueryResult = Apollo.QueryResult<HomeQuery, HomeQueryVariables>;
+export const SkillsDocument = gql`
+  query skills {
+    skills(pagination: { pageSize: 20 }, sort: ["id"]) {
+      data {
+        id
+        attributes {
+          title
+          title
+          experience_years
+          image {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useSkillsQuery__
+ *
+ * To run a query within a React component, call `useSkillsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSkillsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSkillsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useSkillsQuery(
+  baseOptions?: Apollo.QueryHookOptions<SkillsQuery, SkillsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<HomepageQuery, HomepageQueryVariables>(
-    HomepageDocument,
+  return Apollo.useQuery<SkillsQuery, SkillsQueryVariables>(
+    SkillsDocument,
     options
   );
 }
-export type HomepageQueryHookResult = ReturnType<typeof useHomepageQuery>;
-export type HomepageLazyQueryHookResult = ReturnType<
-  typeof useHomepageLazyQuery
->;
-export type HomepageQueryResult = Apollo.QueryResult<
-  HomepageQuery,
-  HomepageQueryVariables
+export function useSkillsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<SkillsQuery, SkillsQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<SkillsQuery, SkillsQueryVariables>(
+    SkillsDocument,
+    options
+  );
+}
+export type SkillsQueryHookResult = ReturnType<typeof useSkillsQuery>;
+export type SkillsLazyQueryHookResult = ReturnType<typeof useSkillsLazyQuery>;
+export type SkillsQueryResult = Apollo.QueryResult<
+  SkillsQuery,
+  SkillsQueryVariables
 >;
 export type AboutQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -1676,9 +1726,9 @@ export type ContactsQuery = {
   } | null;
 };
 
-export type HomepageQueryVariables = Exact<{ [key: string]: never }>;
+export type HomeQueryVariables = Exact<{ [key: string]: never }>;
 
-export type HomepageQuery = {
+export type HomeQuery = {
   __typename?: "Query";
   personal?: {
     __typename?: "PersonalEntityResponse";
@@ -1702,5 +1752,30 @@ export type HomepageQuery = {
         } | null;
       } | null;
     } | null;
+  } | null;
+};
+
+export type SkillsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type SkillsQuery = {
+  __typename?: "Query";
+  skills?: {
+    __typename?: "SkillEntityResponseCollection";
+    data: Array<{
+      __typename?: "SkillEntity";
+      id?: string | null;
+      attributes?: {
+        __typename?: "Skill";
+        title?: string | null;
+        experience_years?: number | null;
+        image?: {
+          __typename?: "UploadFileEntityResponse";
+          data?: {
+            __typename?: "UploadFileEntity";
+            attributes?: { __typename?: "UploadFile"; url: string } | null;
+          } | null;
+        } | null;
+      } | null;
+    }>;
   } | null;
 };
