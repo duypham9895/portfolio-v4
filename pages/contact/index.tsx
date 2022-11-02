@@ -3,7 +3,13 @@ import DetailContact from "../../components/contact/DetailContact";
 import FormContact from "../../components/contact/FormContact";
 
 import HeadTitle from "../../components/UI/HeadTitle";
+import { client } from "../../graphql";
 import { IContact } from "../../types";
+import {
+  ContactsDocument,
+  ContactsQuery,
+  ContactsQueryVariables,
+} from "../../types/generated";
 
 type Props = {
   contact: IContact;
@@ -38,14 +44,30 @@ const Contact = ({ contact }: Props) => {
 };
 
 export async function getStaticProps() {
-  const contact: IContact = {
-    phone: "+84 963 769 049",
-    email: "phamanhduy.sg@gmail.com",
-    address: "Ho Chi Minh, Vietnam",
-  };
+  const { data } = await client.query<ContactsQuery, ContactsQueryVariables>({
+    query: ContactsDocument,
+  });
+
+  const {
+    phone,
+    email,
+    address,
+    address_url: addressUrl,
+  } = data.contacts?.data[0].attributes || {};
+
+  // const contact: IContact = {
+  //   phone: "+84 963 769 049",
+  //   email: "phamanhduy.sg@gmail.com",
+  //   address: "Ho Chi Minh, Vietnam",
+  // };
   return {
     props: {
-      contact,
+      contact: {
+        phone,
+        email,
+        address,
+        addressUrl,
+      },
     },
   };
 }

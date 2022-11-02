@@ -1,0 +1,12 @@
+query contacts {
+  contacts {
+    data {
+      attributes {
+        phone
+        email
+        address
+        address_url
+      }
+    }
+  }
+}

@@ -11,7 +11,9 @@ type Props = {
   contact: IContact;
 };
 
-const DetailContact = ({ contact: { phone, email, address } }: Props) => {
+const DetailContact = ({
+  contact: { phone, email, address, addressUrl },
+}: Props) => {
   return (
     <div className="w-full lg:w-[50%] xl:w-[40%] space-y-6">
       {/* Begin Phone */}
@@ -23,7 +25,12 @@ const DetailContact = ({ contact: { phone, email, address } }: Props) => {
         </span>
         <div className="space-y-2">
           <p className="text-xl font-semibold dark:text-white">Phone :</p>
-          <p className="text-gray-lite text-lg dark:text-[#A6A6A6] ">{phone}</p>
+          <a
+            className="text-gray-lite text-lg dark:text-[#A6A6A6] block"
+            href={`tel:${phone}`}
+          >
+            {phone}
+          </a>
         </div>
       </div>
       {/* End Phone */}
@@ -37,7 +44,12 @@ const DetailContact = ({ contact: { phone, email, address } }: Props) => {
         </span>
         <div className="space-y-2">
           <p className="text-xl font-semibold dark:text-white">Email :</p>
-          <p className="text-gray-lite text-lg dark:text-[#A6A6A6] ">{email}</p>
+          <a
+            className="text-gray-lite text-lg dark:text-[#A6A6A6] block"
+            href={`mailto:${email}`}
+          >
+            {email}
+          </a>
         </div>
       </div>
       {/* End Email */}
@@ -51,9 +63,14 @@ const DetailContact = ({ contact: { phone, email, address } }: Props) => {
         </span>
         <div className="space-y-2">
           <p className="text-xl font-semibold dark:text-white">Address :</p>
-          <p className="text-gray-lite text-lg dark:text-[#A6A6A6] ">
+          <a
+            className="text-gray-lite text-lg dark:text-[#A6A6A6] block"
+            href={addressUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             {address}
-          </p>
+          </a>
         </div>
       </div>
       {/* End Address */}
