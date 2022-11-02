@@ -28,7 +28,7 @@ export default (async () => {
   return {
     schema: [
       {
-        [`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`]: {
+        [`${process.env.NEXT_PUBLIC_STRAPI_GRAPHQL_ENDPOINT}`]: {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,30 +39,15 @@ export default (async () => {
     hooks: {
       afterAllFileWrite: "prettier --write",
     },
+    documents: "graphql/**/*.graphql",
     generates: {
-      "types/generated.d.ts": {
-        plugins: ["typescript"],
-        config: {
-          skipTypename: false,
-          noExport: true,
-          declarationKind: "interface",
-          constEnums: false,
-          namingConvention: {
-            typeNames: "change-case#pascalCase",
-          },
-        },
-      },
-      "types/generated.ts": {
-        plugins: ["typescript"],
-        config: {
-          skipTypename: false,
-          noExport: false,
-          declarationKind: "interface",
-          constEnums: false,
-          namingConvention: {
-            typeNames: "change-case#pascalCase",
-          },
-        },
+      "types/generated.tsx": {
+        plugins: [
+          "typescript",
+          "typescript-react-apollo",
+          "typescript-operations",
+        ],
+        config: { reactApolloVersion: 3 },
       },
     },
   };

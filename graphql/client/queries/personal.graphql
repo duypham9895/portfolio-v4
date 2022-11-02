@@ -1,0 +1,14 @@
+query getPersonal {
+  personal(id: 1) {
+    data {
+      id
+      attributes {
+        full_name
+        title
+        birthday
+        description
+        resume_url
+      }
+    }
+  }
+}

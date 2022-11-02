@@ -1,14 +1,19 @@
-type Maybe<T> = T | null;
-type InputMaybe<T> = Maybe<T>;
-type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+import { gql } from "@apollo/client";
+import * as Apollo from "@apollo/client";
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]?: Maybe<T[SubKey]>;
 };
-type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
-interface Scalars {
+export type Scalars = {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -18,9 +23,9 @@ interface Scalars {
   DateTime: any;
   JSON: any;
   Upload: any;
-}
+};
 
-interface BooleanFilterInput {
+export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["Boolean"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["Boolean"]>>>;
   contains?: InputMaybe<Scalars["Boolean"]>;
@@ -42,9 +47,9 @@ interface BooleanFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["Boolean"]>>>;
   startsWith?: InputMaybe<Scalars["Boolean"]>;
-}
+};
 
-interface Contact {
+export type Contact = {
   __typename?: "Contact";
   address?: Maybe<Scalars["String"]>;
   address_url?: Maybe<Scalars["String"]>;
@@ -53,26 +58,26 @@ interface Contact {
   phone?: Maybe<Scalars["String"]>;
   publishedAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface ContactEntity {
+export type ContactEntity = {
   __typename?: "ContactEntity";
   attributes?: Maybe<Contact>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface ContactEntityResponse {
+export type ContactEntityResponse = {
   __typename?: "ContactEntityResponse";
   data?: Maybe<ContactEntity>;
-}
+};
 
-interface ContactEntityResponseCollection {
+export type ContactEntityResponseCollection = {
   __typename?: "ContactEntityResponseCollection";
   data: Array<ContactEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface ContactFiltersInput {
+export type ContactFiltersInput = {
   address?: InputMaybe<StringFilterInput>;
   address_url?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
@@ -84,17 +89,17 @@ interface ContactFiltersInput {
   phone?: InputMaybe<StringFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface ContactInput {
+export type ContactInput = {
   address?: InputMaybe<Scalars["String"]>;
   address_url?: InputMaybe<Scalars["String"]>;
   email?: InputMaybe<Scalars["String"]>;
   phone?: InputMaybe<Scalars["String"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
-}
+};
 
-interface Course {
+export type Course = {
   __typename?: "Course";
   createdAt?: Maybe<Scalars["DateTime"]>;
   credential_id?: Maybe<Scalars["String"]>;
@@ -105,26 +110,26 @@ interface Course {
   publishedAt?: Maybe<Scalars["DateTime"]>;
   start_date?: Maybe<Scalars["Date"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface CourseEntity {
+export type CourseEntity = {
   __typename?: "CourseEntity";
   attributes?: Maybe<Course>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface CourseEntityResponse {
+export type CourseEntityResponse = {
   __typename?: "CourseEntityResponse";
   data?: Maybe<CourseEntity>;
-}
+};
 
-interface CourseEntityResponseCollection {
+export type CourseEntityResponseCollection = {
   __typename?: "CourseEntityResponseCollection";
   data: Array<CourseEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface CourseFiltersInput {
+export type CourseFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   credential_id?: InputMaybe<StringFilterInput>;
@@ -138,9 +143,9 @@ interface CourseFiltersInput {
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   start_date?: InputMaybe<DateFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface CourseInput {
+export type CourseInput = {
   credential_id?: InputMaybe<Scalars["String"]>;
   credential_url?: InputMaybe<Scalars["String"]>;
   end_date?: InputMaybe<Scalars["Date"]>;
@@ -148,9 +153,9 @@ interface CourseInput {
   organization?: InputMaybe<Scalars["String"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   start_date?: InputMaybe<Scalars["Date"]>;
-}
+};
 
-interface DateFilterInput {
+export type DateFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
   contains?: InputMaybe<Scalars["Date"]>;
@@ -172,9 +177,9 @@ interface DateFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
   startsWith?: InputMaybe<Scalars["Date"]>;
-}
+};
 
-interface DateTimeFilterInput {
+export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   contains?: InputMaybe<Scalars["DateTime"]>;
@@ -196,9 +201,9 @@ interface DateTimeFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
   startsWith?: InputMaybe<Scalars["DateTime"]>;
-}
+};
 
-interface Education {
+export type Education = {
   __typename?: "Education";
   createdAt?: Maybe<Scalars["DateTime"]>;
   degree?: Maybe<Scalars["String"]>;
@@ -208,26 +213,26 @@ interface Education {
   school?: Maybe<Scalars["String"]>;
   start_date?: Maybe<Scalars["Date"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface EducationEntity {
+export type EducationEntity = {
   __typename?: "EducationEntity";
   attributes?: Maybe<Education>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface EducationEntityResponse {
+export type EducationEntityResponse = {
   __typename?: "EducationEntityResponse";
   data?: Maybe<EducationEntity>;
-}
+};
 
-interface EducationEntityResponseCollection {
+export type EducationEntityResponseCollection = {
   __typename?: "EducationEntityResponseCollection";
   data: Array<EducationEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface EducationFiltersInput {
+export type EducationFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<EducationFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   degree?: InputMaybe<StringFilterInput>;
@@ -240,18 +245,18 @@ interface EducationFiltersInput {
   school?: InputMaybe<StringFilterInput>;
   start_date?: InputMaybe<DateFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface EducationInput {
+export type EducationInput = {
   degree?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
   end_date?: InputMaybe<Scalars["Date"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   school?: InputMaybe<Scalars["String"]>;
   start_date?: InputMaybe<Scalars["Date"]>;
-}
+};
 
-interface Experience {
+export type Experience = {
   __typename?: "Experience";
   company_name: Scalars["String"];
   company_url?: Maybe<Scalars["String"]>;
@@ -262,26 +267,26 @@ interface Experience {
   publishedAt?: Maybe<Scalars["DateTime"]>;
   start_date: Scalars["Date"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface ExperienceEntity {
+export type ExperienceEntity = {
   __typename?: "ExperienceEntity";
   attributes?: Maybe<Experience>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface ExperienceEntityResponse {
+export type ExperienceEntityResponse = {
   __typename?: "ExperienceEntityResponse";
   data?: Maybe<ExperienceEntity>;
-}
+};
 
-interface ExperienceEntityResponseCollection {
+export type ExperienceEntityResponseCollection = {
   __typename?: "ExperienceEntityResponseCollection";
   data: Array<ExperienceEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface ExperienceFiltersInput {
+export type ExperienceFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ExperienceFiltersInput>>>;
   company_name?: InputMaybe<StringFilterInput>;
   company_url?: InputMaybe<StringFilterInput>;
@@ -295,9 +300,9 @@ interface ExperienceFiltersInput {
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   start_date?: InputMaybe<DateFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface ExperienceInput {
+export type ExperienceInput = {
   company_name?: InputMaybe<Scalars["String"]>;
   company_url?: InputMaybe<Scalars["String"]>;
   description?: InputMaybe<Scalars["String"]>;
@@ -305,15 +310,15 @@ interface ExperienceInput {
   job_title?: InputMaybe<Scalars["String"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   start_date?: InputMaybe<Scalars["Date"]>;
-}
+};
 
-interface FileInfoInput {
+export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars["String"]>;
   caption?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
-}
+};
 
-interface FloatFilterInput {
+export type FloatFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
   contains?: InputMaybe<Scalars["Float"]>;
@@ -335,9 +340,9 @@ interface FloatFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["Float"]>>>;
   startsWith?: InputMaybe<Scalars["Float"]>;
-}
+};
 
-type GenericMorph =
+export type GenericMorph =
   | Contact
   | Course
   | Education
@@ -351,32 +356,32 @@ type GenericMorph =
   | UsersPermissionsRole
   | UsersPermissionsUser;
 
-interface I18NLocale {
+export type I18NLocale = {
   __typename?: "I18NLocale";
   code?: Maybe<Scalars["String"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
   name?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface I18NLocaleEntity {
+export type I18NLocaleEntity = {
   __typename?: "I18NLocaleEntity";
   attributes?: Maybe<I18NLocale>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface I18NLocaleEntityResponse {
+export type I18NLocaleEntityResponse = {
   __typename?: "I18NLocaleEntityResponse";
   data?: Maybe<I18NLocaleEntity>;
-}
+};
 
-interface I18NLocaleEntityResponseCollection {
+export type I18NLocaleEntityResponseCollection = {
   __typename?: "I18NLocaleEntityResponseCollection";
   data: Array<I18NLocaleEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface I18NLocaleFiltersInput {
+export type I18NLocaleFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>;
   code?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -385,9 +390,9 @@ interface I18NLocaleFiltersInput {
   not?: InputMaybe<I18NLocaleFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface IdFilterInput {
+export type IdFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   contains?: InputMaybe<Scalars["ID"]>;
@@ -409,9 +414,9 @@ interface IdFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   startsWith?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface IntFilterInput {
+export type IntFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
   contains?: InputMaybe<Scalars["Int"]>;
@@ -433,9 +438,9 @@ interface IntFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["Int"]>>>;
   startsWith?: InputMaybe<Scalars["Int"]>;
-}
+};
 
-interface JsonFilterInput {
+export type JsonFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["JSON"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["JSON"]>>>;
   contains?: InputMaybe<Scalars["JSON"]>;
@@ -457,9 +462,9 @@ interface JsonFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["JSON"]>>>;
   startsWith?: InputMaybe<Scalars["JSON"]>;
-}
+};
 
-interface Mutation {
+export type Mutation = {
   __typename?: "Mutation";
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
@@ -512,206 +517,206 @@ interface Mutation {
   /** Update an existing user */
   updateUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   upload: UploadFileEntityResponse;
-}
+};
 
-interface MutationChangePasswordArgs {
+export type MutationChangePasswordArgs = {
   currentPassword: Scalars["String"];
   password: Scalars["String"];
   passwordConfirmation: Scalars["String"];
-}
+};
 
-interface MutationCreateContactArgs {
+export type MutationCreateContactArgs = {
   data: ContactInput;
-}
+};
 
-interface MutationCreateCourseArgs {
+export type MutationCreateCourseArgs = {
   data: CourseInput;
-}
+};
 
-interface MutationCreateEducationArgs {
+export type MutationCreateEducationArgs = {
   data: EducationInput;
-}
+};
 
-interface MutationCreateExperienceArgs {
+export type MutationCreateExperienceArgs = {
   data: ExperienceInput;
-}
+};
 
-interface MutationCreatePersonalArgs {
+export type MutationCreatePersonalArgs = {
   data: PersonalInput;
-}
+};
 
-interface MutationCreateSkillArgs {
+export type MutationCreateSkillArgs = {
   data: SkillInput;
-}
+};
 
-interface MutationCreateUploadFileArgs {
+export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
-}
+};
 
-interface MutationCreateUploadFolderArgs {
+export type MutationCreateUploadFolderArgs = {
   data: UploadFolderInput;
-}
+};
 
-interface MutationCreateUsersPermissionsRoleArgs {
+export type MutationCreateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
-}
+};
 
-interface MutationCreateUsersPermissionsUserArgs {
+export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
-}
+};
 
-interface MutationDeleteContactArgs {
+export type MutationDeleteContactArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteCourseArgs {
+export type MutationDeleteCourseArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteEducationArgs {
+export type MutationDeleteEducationArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteExperienceArgs {
+export type MutationDeleteExperienceArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeletePersonalArgs {
+export type MutationDeletePersonalArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteSkillArgs {
+export type MutationDeleteSkillArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteUploadFileArgs {
+export type MutationDeleteUploadFileArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteUploadFolderArgs {
+export type MutationDeleteUploadFolderArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteUsersPermissionsRoleArgs {
+export type MutationDeleteUsersPermissionsRoleArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationDeleteUsersPermissionsUserArgs {
+export type MutationDeleteUsersPermissionsUserArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationEmailConfirmationArgs {
+export type MutationEmailConfirmationArgs = {
   confirmation: Scalars["String"];
-}
+};
 
-interface MutationForgotPasswordArgs {
+export type MutationForgotPasswordArgs = {
   email: Scalars["String"];
-}
+};
 
-interface MutationLoginArgs {
+export type MutationLoginArgs = {
   input: UsersPermissionsLoginInput;
-}
+};
 
-interface MutationMultipleUploadArgs {
+export type MutationMultipleUploadArgs = {
   field?: InputMaybe<Scalars["String"]>;
   files: Array<InputMaybe<Scalars["Upload"]>>;
   ref?: InputMaybe<Scalars["String"]>;
   refId?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface MutationRegisterArgs {
+export type MutationRegisterArgs = {
   input: UsersPermissionsRegisterInput;
-}
+};
 
-interface MutationRemoveFileArgs {
+export type MutationRemoveFileArgs = {
   id: Scalars["ID"];
-}
+};
 
-interface MutationResetPasswordArgs {
+export type MutationResetPasswordArgs = {
   code: Scalars["String"];
   password: Scalars["String"];
   passwordConfirmation: Scalars["String"];
-}
+};
 
-interface MutationUpdateContactArgs {
+export type MutationUpdateContactArgs = {
   data: ContactInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateCourseArgs {
+export type MutationUpdateCourseArgs = {
   data: CourseInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateEducationArgs {
+export type MutationUpdateEducationArgs = {
   data: EducationInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateExperienceArgs {
+export type MutationUpdateExperienceArgs = {
   data: ExperienceInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateFileInfoArgs {
+export type MutationUpdateFileInfoArgs = {
   id: Scalars["ID"];
   info?: InputMaybe<FileInfoInput>;
-}
+};
 
-interface MutationUpdatePersonalArgs {
+export type MutationUpdatePersonalArgs = {
   data: PersonalInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateSkillArgs {
+export type MutationUpdateSkillArgs = {
   data: SkillInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateUploadFileArgs {
+export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateUploadFolderArgs {
+export type MutationUpdateUploadFolderArgs = {
   data: UploadFolderInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateUsersPermissionsRoleArgs {
+export type MutationUpdateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUpdateUsersPermissionsUserArgs {
+export type MutationUpdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
   id: Scalars["ID"];
-}
+};
 
-interface MutationUploadArgs {
+export type MutationUploadArgs = {
   field?: InputMaybe<Scalars["String"]>;
   file: Scalars["Upload"];
   info?: InputMaybe<FileInfoInput>;
   ref?: InputMaybe<Scalars["String"]>;
   refId?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface Pagination {
+export type Pagination = {
   __typename?: "Pagination";
   page: Scalars["Int"];
   pageCount: Scalars["Int"];
   pageSize: Scalars["Int"];
   total: Scalars["Int"];
-}
+};
 
-interface PaginationArg {
+export type PaginationArg = {
   limit?: InputMaybe<Scalars["Int"]>;
   page?: InputMaybe<Scalars["Int"]>;
   pageSize?: InputMaybe<Scalars["Int"]>;
   start?: InputMaybe<Scalars["Int"]>;
-}
+};
 
-interface Personal {
+export type Personal = {
   __typename?: "Personal";
   avatar?: Maybe<UploadFileEntityResponse>;
   birthday?: Maybe<Scalars["Date"]>;
@@ -722,26 +727,26 @@ interface Personal {
   resume_url?: Maybe<Scalars["String"]>;
   title?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface PersonalEntity {
+export type PersonalEntity = {
   __typename?: "PersonalEntity";
   attributes?: Maybe<Personal>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface PersonalEntityResponse {
+export type PersonalEntityResponse = {
   __typename?: "PersonalEntityResponse";
   data?: Maybe<PersonalEntity>;
-}
+};
 
-interface PersonalEntityResponseCollection {
+export type PersonalEntityResponseCollection = {
   __typename?: "PersonalEntityResponseCollection";
   data: Array<PersonalEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface PersonalFiltersInput {
+export type PersonalFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PersonalFiltersInput>>>;
   birthday?: InputMaybe<DateFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -754,9 +759,9 @@ interface PersonalFiltersInput {
   resume_url?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface PersonalInput {
+export type PersonalInput = {
   avatar?: InputMaybe<Scalars["ID"]>;
   birthday?: InputMaybe<Scalars["Date"]>;
   description?: InputMaybe<Scalars["String"]>;
@@ -764,14 +769,14 @@ interface PersonalInput {
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
   resume_url?: InputMaybe<Scalars["String"]>;
   title?: InputMaybe<Scalars["String"]>;
-}
+};
 
 export enum PublicationState {
   Live = "LIVE",
   Preview = "PREVIEW",
 }
 
-interface Query {
+export type Query = {
   __typename?: "Query";
   contact?: Maybe<ContactEntityResponse>;
   contacts?: Maybe<ContactEntityResponseCollection>;
@@ -796,155 +801,155 @@ interface Query {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
-}
+};
 
-interface QueryContactArgs {
+export type QueryContactArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryContactsArgs {
+export type QueryContactsArgs = {
   filters?: InputMaybe<ContactFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryCourseArgs {
+export type QueryCourseArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryCoursesArgs {
+export type QueryCoursesArgs = {
   filters?: InputMaybe<CourseFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryEducationArgs {
+export type QueryEducationArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryEducationsArgs {
+export type QueryEducationsArgs = {
   filters?: InputMaybe<EducationFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryExperienceArgs {
+export type QueryExperienceArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryExperiencesArgs {
+export type QueryExperiencesArgs = {
   filters?: InputMaybe<ExperienceFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryI18NLocaleArgs {
+export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryI18NLocalesArgs {
+export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryPersonalArgs {
+export type QueryPersonalArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryPersonalsArgs {
+export type QueryPersonalsArgs = {
   filters?: InputMaybe<PersonalFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QuerySkillArgs {
+export type QuerySkillArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QuerySkillsArgs {
+export type QuerySkillsArgs = {
   filters?: InputMaybe<SkillFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryUploadFileArgs {
+export type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryUploadFilesArgs {
+export type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryUploadFolderArgs {
+export type QueryUploadFolderArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryUploadFoldersArgs {
+export type QueryUploadFoldersArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryUsersPermissionsRoleArgs {
+export type QueryUsersPermissionsRoleArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryUsersPermissionsRolesArgs {
+export type QueryUsersPermissionsRolesArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface QueryUsersPermissionsUserArgs {
+export type QueryUsersPermissionsUserArgs = {
   id?: InputMaybe<Scalars["ID"]>;
-}
+};
 
-interface QueryUsersPermissionsUsersArgs {
+export type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface ResponseCollectionMeta {
+export type ResponseCollectionMeta = {
   __typename?: "ResponseCollectionMeta";
   pagination: Pagination;
-}
+};
 
-interface Skill {
+export type Skill = {
   __typename?: "Skill";
   createdAt?: Maybe<Scalars["DateTime"]>;
   experience_years?: Maybe<Scalars["Float"]>;
   image?: Maybe<UploadFileEntityResponse>;
   title?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface SkillEntity {
+export type SkillEntity = {
   __typename?: "SkillEntity";
   attributes?: Maybe<Skill>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface SkillEntityResponse {
+export type SkillEntityResponse = {
   __typename?: "SkillEntityResponse";
   data?: Maybe<SkillEntity>;
-}
+};
 
-interface SkillEntityResponseCollection {
+export type SkillEntityResponseCollection = {
   __typename?: "SkillEntityResponseCollection";
   data: Array<SkillEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface SkillFiltersInput {
+export type SkillFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<SkillFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   experience_years?: InputMaybe<FloatFilterInput>;
@@ -953,15 +958,15 @@ interface SkillFiltersInput {
   or?: InputMaybe<Array<InputMaybe<SkillFiltersInput>>>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface SkillInput {
+export type SkillInput = {
   experience_years?: InputMaybe<Scalars["Float"]>;
   image?: InputMaybe<Scalars["ID"]>;
   title?: InputMaybe<Scalars["String"]>;
-}
+};
 
-interface StringFilterInput {
+export type StringFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   contains?: InputMaybe<Scalars["String"]>;
@@ -983,9 +988,9 @@ interface StringFilterInput {
   null?: InputMaybe<Scalars["Boolean"]>;
   or?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
   startsWith?: InputMaybe<Scalars["String"]>;
-}
+};
 
-interface UploadFile {
+export type UploadFile = {
   __typename?: "UploadFile";
   alternativeText?: Maybe<Scalars["String"]>;
   caption?: Maybe<Scalars["String"]>;
@@ -1004,26 +1009,26 @@ interface UploadFile {
   updatedAt?: Maybe<Scalars["DateTime"]>;
   url: Scalars["String"];
   width?: Maybe<Scalars["Int"]>;
-}
+};
 
-interface UploadFileEntity {
+export type UploadFileEntity = {
   __typename?: "UploadFileEntity";
   attributes?: Maybe<UploadFile>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface UploadFileEntityResponse {
+export type UploadFileEntityResponse = {
   __typename?: "UploadFileEntityResponse";
   data?: Maybe<UploadFileEntity>;
-}
+};
 
-interface UploadFileEntityResponseCollection {
+export type UploadFileEntityResponseCollection = {
   __typename?: "UploadFileEntityResponseCollection";
   data: Array<UploadFileEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface UploadFileFiltersInput {
+export type UploadFileFiltersInput = {
   alternativeText?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<UploadFileFiltersInput>>>;
   caption?: InputMaybe<StringFilterInput>;
@@ -1046,9 +1051,9 @@ interface UploadFileFiltersInput {
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   url?: InputMaybe<StringFilterInput>;
   width?: InputMaybe<IntFilterInput>;
-}
+};
 
-interface UploadFileInput {
+export type UploadFileInput = {
   alternativeText?: InputMaybe<Scalars["String"]>;
   caption?: InputMaybe<Scalars["String"]>;
   ext?: InputMaybe<Scalars["String"]>;
@@ -1065,14 +1070,14 @@ interface UploadFileInput {
   size?: InputMaybe<Scalars["Float"]>;
   url?: InputMaybe<Scalars["String"]>;
   width?: InputMaybe<Scalars["Int"]>;
-}
+};
 
-interface UploadFileRelationResponseCollection {
+export type UploadFileRelationResponseCollection = {
   __typename?: "UploadFileRelationResponseCollection";
   data: Array<UploadFileEntity>;
-}
+};
 
-interface UploadFolder {
+export type UploadFolder = {
   __typename?: "UploadFolder";
   children?: Maybe<UploadFolderRelationResponseCollection>;
   createdAt?: Maybe<Scalars["DateTime"]>;
@@ -1082,38 +1087,38 @@ interface UploadFolder {
   path: Scalars["String"];
   pathId: Scalars["Int"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface UploadFolderChildrenArgs {
+export type UploadFolderChildrenArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface UploadFolderFilesArgs {
+export type UploadFolderFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface UploadFolderEntity {
+export type UploadFolderEntity = {
   __typename?: "UploadFolderEntity";
   attributes?: Maybe<UploadFolder>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface UploadFolderEntityResponse {
+export type UploadFolderEntityResponse = {
   __typename?: "UploadFolderEntityResponse";
   data?: Maybe<UploadFolderEntity>;
-}
+};
 
-interface UploadFolderEntityResponseCollection {
+export type UploadFolderEntityResponseCollection = {
   __typename?: "UploadFolderEntityResponseCollection";
   data: Array<UploadFolderEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface UploadFolderFiltersInput {
+export type UploadFolderFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UploadFolderFiltersInput>>>;
   children?: InputMaybe<UploadFolderFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -1126,45 +1131,45 @@ interface UploadFolderFiltersInput {
   path?: InputMaybe<StringFilterInput>;
   pathId?: InputMaybe<IntFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface UploadFolderInput {
+export type UploadFolderInput = {
   children?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   files?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   name?: InputMaybe<Scalars["String"]>;
   parent?: InputMaybe<Scalars["ID"]>;
   path?: InputMaybe<Scalars["String"]>;
   pathId?: InputMaybe<Scalars["Int"]>;
-}
+};
 
-interface UploadFolderRelationResponseCollection {
+export type UploadFolderRelationResponseCollection = {
   __typename?: "UploadFolderRelationResponseCollection";
   data: Array<UploadFolderEntity>;
-}
+};
 
-interface UsersPermissionsCreateRolePayload {
+export type UsersPermissionsCreateRolePayload = {
   __typename?: "UsersPermissionsCreateRolePayload";
   ok: Scalars["Boolean"];
-}
+};
 
-interface UsersPermissionsDeleteRolePayload {
+export type UsersPermissionsDeleteRolePayload = {
   __typename?: "UsersPermissionsDeleteRolePayload";
   ok: Scalars["Boolean"];
-}
+};
 
-interface UsersPermissionsLoginInput {
+export type UsersPermissionsLoginInput = {
   identifier: Scalars["String"];
   password: Scalars["String"];
   provider?: Scalars["String"];
-}
+};
 
-interface UsersPermissionsLoginPayload {
+export type UsersPermissionsLoginPayload = {
   __typename?: "UsersPermissionsLoginPayload";
   jwt?: Maybe<Scalars["String"]>;
   user: UsersPermissionsMe;
-}
+};
 
-interface UsersPermissionsMe {
+export type UsersPermissionsMe = {
   __typename?: "UsersPermissionsMe";
   blocked?: Maybe<Scalars["Boolean"]>;
   confirmed?: Maybe<Scalars["Boolean"]>;
@@ -1172,36 +1177,36 @@ interface UsersPermissionsMe {
   id: Scalars["ID"];
   role?: Maybe<UsersPermissionsMeRole>;
   username: Scalars["String"];
-}
+};
 
-interface UsersPermissionsMeRole {
+export type UsersPermissionsMeRole = {
   __typename?: "UsersPermissionsMeRole";
   description?: Maybe<Scalars["String"]>;
   id: Scalars["ID"];
   name: Scalars["String"];
   type?: Maybe<Scalars["String"]>;
-}
+};
 
-interface UsersPermissionsPasswordPayload {
+export type UsersPermissionsPasswordPayload = {
   __typename?: "UsersPermissionsPasswordPayload";
   ok: Scalars["Boolean"];
-}
+};
 
-interface UsersPermissionsPermission {
+export type UsersPermissionsPermission = {
   __typename?: "UsersPermissionsPermission";
   action: Scalars["String"];
   createdAt?: Maybe<Scalars["DateTime"]>;
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
-}
+};
 
-interface UsersPermissionsPermissionEntity {
+export type UsersPermissionsPermissionEntity = {
   __typename?: "UsersPermissionsPermissionEntity";
   attributes?: Maybe<UsersPermissionsPermission>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface UsersPermissionsPermissionFiltersInput {
+export type UsersPermissionsPermissionFiltersInput = {
   action?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
@@ -1210,20 +1215,20 @@ interface UsersPermissionsPermissionFiltersInput {
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsPermissionFiltersInput>>>;
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
+};
 
-interface UsersPermissionsPermissionRelationResponseCollection {
+export type UsersPermissionsPermissionRelationResponseCollection = {
   __typename?: "UsersPermissionsPermissionRelationResponseCollection";
   data: Array<UsersPermissionsPermissionEntity>;
-}
+};
 
-interface UsersPermissionsRegisterInput {
+export type UsersPermissionsRegisterInput = {
   email: Scalars["String"];
   password: Scalars["String"];
   username: Scalars["String"];
-}
+};
 
-interface UsersPermissionsRole {
+export type UsersPermissionsRole = {
   __typename?: "UsersPermissionsRole";
   createdAt?: Maybe<Scalars["DateTime"]>;
   description?: Maybe<Scalars["String"]>;
@@ -1232,38 +1237,38 @@ interface UsersPermissionsRole {
   type?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   users?: Maybe<UsersPermissionsUserRelationResponseCollection>;
-}
+};
 
-interface UsersPermissionsRolePermissionsArgs {
+export type UsersPermissionsRolePermissionsArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface UsersPermissionsRoleUsersArgs {
+export type UsersPermissionsRoleUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
-}
+};
 
-interface UsersPermissionsRoleEntity {
+export type UsersPermissionsRoleEntity = {
   __typename?: "UsersPermissionsRoleEntity";
   attributes?: Maybe<UsersPermissionsRole>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface UsersPermissionsRoleEntityResponse {
+export type UsersPermissionsRoleEntityResponse = {
   __typename?: "UsersPermissionsRoleEntityResponse";
   data?: Maybe<UsersPermissionsRoleEntity>;
-}
+};
 
-interface UsersPermissionsRoleEntityResponseCollection {
+export type UsersPermissionsRoleEntityResponseCollection = {
   __typename?: "UsersPermissionsRoleEntityResponseCollection";
   data: Array<UsersPermissionsRoleEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface UsersPermissionsRoleFiltersInput {
+export type UsersPermissionsRoleFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsRoleFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
@@ -1275,22 +1280,22 @@ interface UsersPermissionsRoleFiltersInput {
   type?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   users?: InputMaybe<UsersPermissionsUserFiltersInput>;
-}
+};
 
-interface UsersPermissionsRoleInput {
+export type UsersPermissionsRoleInput = {
   description?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
   permissions?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   type?: InputMaybe<Scalars["String"]>;
   users?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
-}
+};
 
-interface UsersPermissionsUpdateRolePayload {
+export type UsersPermissionsUpdateRolePayload = {
   __typename?: "UsersPermissionsUpdateRolePayload";
   ok: Scalars["Boolean"];
-}
+};
 
-interface UsersPermissionsUser {
+export type UsersPermissionsUser = {
   __typename?: "UsersPermissionsUser";
   blocked?: Maybe<Scalars["Boolean"]>;
   confirmed?: Maybe<Scalars["Boolean"]>;
@@ -1300,26 +1305,26 @@ interface UsersPermissionsUser {
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
   username: Scalars["String"];
-}
+};
 
-interface UsersPermissionsUserEntity {
+export type UsersPermissionsUserEntity = {
   __typename?: "UsersPermissionsUserEntity";
   attributes?: Maybe<UsersPermissionsUser>;
   id?: Maybe<Scalars["ID"]>;
-}
+};
 
-interface UsersPermissionsUserEntityResponse {
+export type UsersPermissionsUserEntityResponse = {
   __typename?: "UsersPermissionsUserEntityResponse";
   data?: Maybe<UsersPermissionsUserEntity>;
-}
+};
 
-interface UsersPermissionsUserEntityResponseCollection {
+export type UsersPermissionsUserEntityResponseCollection = {
   __typename?: "UsersPermissionsUserEntityResponseCollection";
   data: Array<UsersPermissionsUserEntity>;
   meta: ResponseCollectionMeta;
-}
+};
 
-interface UsersPermissionsUserFiltersInput {
+export type UsersPermissionsUserFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
   blocked?: InputMaybe<BooleanFilterInput>;
   confirmationToken?: InputMaybe<StringFilterInput>;
@@ -1335,9 +1340,9 @@ interface UsersPermissionsUserFiltersInput {
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   username?: InputMaybe<StringFilterInput>;
-}
+};
 
-interface UsersPermissionsUserInput {
+export type UsersPermissionsUserInput = {
   blocked?: InputMaybe<Scalars["Boolean"]>;
   confirmationToken?: InputMaybe<Scalars["String"]>;
   confirmed?: InputMaybe<Scalars["Boolean"]>;
@@ -1347,9 +1352,94 @@ interface UsersPermissionsUserInput {
   resetPasswordToken?: InputMaybe<Scalars["String"]>;
   role?: InputMaybe<Scalars["ID"]>;
   username?: InputMaybe<Scalars["String"]>;
-}
+};
 
-interface UsersPermissionsUserRelationResponseCollection {
+export type UsersPermissionsUserRelationResponseCollection = {
   __typename?: "UsersPermissionsUserRelationResponseCollection";
   data: Array<UsersPermissionsUserEntity>;
+};
+
+export const GetPersonalDocument = gql`
+  query getPersonal {
+    personal(id: 1) {
+      data {
+        id
+        attributes {
+          full_name
+          title
+          birthday
+          description
+          resume_url
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetPersonalQuery__
+ *
+ * To run a query within a React component, call `useGetPersonalQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPersonalQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPersonalQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetPersonalQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetPersonalQuery,
+    GetPersonalQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetPersonalQuery, GetPersonalQueryVariables>(
+    GetPersonalDocument,
+    options
+  );
 }
+export function useGetPersonalLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetPersonalQuery,
+    GetPersonalQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetPersonalQuery, GetPersonalQueryVariables>(
+    GetPersonalDocument,
+    options
+  );
+}
+export type GetPersonalQueryHookResult = ReturnType<typeof useGetPersonalQuery>;
+export type GetPersonalLazyQueryHookResult = ReturnType<
+  typeof useGetPersonalLazyQuery
+>;
+export type GetPersonalQueryResult = Apollo.QueryResult<
+  GetPersonalQuery,
+  GetPersonalQueryVariables
+>;
+export type GetPersonalQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetPersonalQuery = {
+  __typename?: "Query";
+  personal?: {
+    __typename?: "PersonalEntityResponse";
+    data?: {
+      __typename?: "PersonalEntity";
+      id?: string | null;
+      attributes?: {
+        __typename?: "Personal";
+        full_name?: string | null;
+        title?: string | null;
+        birthday?: any | null;
+        description?: string | null;
+        resume_url?: string | null;
+      } | null;
+    } | null;
+  } | null;
+};
