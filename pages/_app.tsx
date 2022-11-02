@@ -7,7 +7,6 @@ import "../styles/globals.css";
 
 import PortfolioProvider from "../hooks/PortfolioProvider";
 import Layout from "../components/layout/Layout";
-import StrapiApolloProvider from "../graphql";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -16,11 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <PortfolioProvider>
-      <StrapiApolloProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </StrapiApolloProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </PortfolioProvider>
   );
 }

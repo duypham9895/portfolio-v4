@@ -7,7 +7,14 @@ query getPersonal {
         title
         birthday
         description
-        resume_url
+        socials {
+          data {
+            attributes {
+              title
+              url
+            }
+          }
+        }
       }
     }
   }

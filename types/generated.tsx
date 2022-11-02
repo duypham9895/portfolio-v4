@@ -350,6 +350,7 @@ export type GenericMorph =
   | I18NLocale
   | Personal
   | Skill
+  | Social
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
@@ -474,6 +475,7 @@ export type Mutation = {
   createExperience?: Maybe<ExperienceEntityResponse>;
   createPersonal?: Maybe<PersonalEntityResponse>;
   createSkill?: Maybe<SkillEntityResponse>;
+  createSocial?: Maybe<SocialEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -486,6 +488,7 @@ export type Mutation = {
   deleteExperience?: Maybe<ExperienceEntityResponse>;
   deletePersonal?: Maybe<PersonalEntityResponse>;
   deleteSkill?: Maybe<SkillEntityResponse>;
+  deleteSocial?: Maybe<SocialEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -510,6 +513,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updatePersonal?: Maybe<PersonalEntityResponse>;
   updateSkill?: Maybe<SkillEntityResponse>;
+  updateSocial?: Maybe<SocialEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -549,6 +553,10 @@ export type MutationCreateSkillArgs = {
   data: SkillInput;
 };
 
+export type MutationCreateSocialArgs = {
+  data: SocialInput;
+};
+
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
@@ -586,6 +594,10 @@ export type MutationDeletePersonalArgs = {
 };
 
 export type MutationDeleteSkillArgs = {
+  id: Scalars["ID"];
+};
+
+export type MutationDeleteSocialArgs = {
   id: Scalars["ID"];
 };
 
@@ -673,6 +685,11 @@ export type MutationUpdateSkillArgs = {
   id: Scalars["ID"];
 };
 
+export type MutationUpdateSocialArgs = {
+  data: SocialInput;
+  id: Scalars["ID"];
+};
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars["ID"];
@@ -724,9 +741,15 @@ export type Personal = {
   description?: Maybe<Scalars["String"]>;
   full_name?: Maybe<Scalars["String"]>;
   publishedAt?: Maybe<Scalars["DateTime"]>;
-  resume_url?: Maybe<Scalars["String"]>;
+  socials?: Maybe<SocialRelationResponseCollection>;
   title?: Maybe<Scalars["String"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
+};
+
+export type PersonalSocialsArgs = {
+  filters?: InputMaybe<SocialFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 };
 
 export type PersonalEntity = {
@@ -756,7 +779,7 @@ export type PersonalFiltersInput = {
   not?: InputMaybe<PersonalFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PersonalFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  resume_url?: InputMaybe<StringFilterInput>;
+  socials?: InputMaybe<SocialFiltersInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -767,7 +790,7 @@ export type PersonalInput = {
   description?: InputMaybe<Scalars["String"]>;
   full_name?: InputMaybe<Scalars["String"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]>;
-  resume_url?: InputMaybe<Scalars["String"]>;
+  socials?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
   title?: InputMaybe<Scalars["String"]>;
 };
 
@@ -793,6 +816,8 @@ export type Query = {
   personals?: Maybe<PersonalEntityResponseCollection>;
   skill?: Maybe<SkillEntityResponse>;
   skills?: Maybe<SkillEntityResponseCollection>;
+  social?: Maybe<SocialEntityResponse>;
+  socials?: Maybe<SocialEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -874,6 +899,16 @@ export type QuerySkillArgs = {
 
 export type QuerySkillsArgs = {
   filters?: InputMaybe<SkillFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+};
+
+export type QuerySocialArgs = {
+  id?: InputMaybe<Scalars["ID"]>;
+};
+
+export type QuerySocialsArgs = {
+  filters?: InputMaybe<SocialFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 };
@@ -964,6 +999,52 @@ export type SkillInput = {
   experience_years?: InputMaybe<Scalars["Float"]>;
   image?: InputMaybe<Scalars["ID"]>;
   title?: InputMaybe<Scalars["String"]>;
+};
+
+export type Social = {
+  __typename?: "Social";
+  createdAt?: Maybe<Scalars["DateTime"]>;
+  title?: Maybe<Scalars["String"]>;
+  updatedAt?: Maybe<Scalars["DateTime"]>;
+  url?: Maybe<Scalars["String"]>;
+};
+
+export type SocialEntity = {
+  __typename?: "SocialEntity";
+  attributes?: Maybe<Social>;
+  id?: Maybe<Scalars["ID"]>;
+};
+
+export type SocialEntityResponse = {
+  __typename?: "SocialEntityResponse";
+  data?: Maybe<SocialEntity>;
+};
+
+export type SocialEntityResponseCollection = {
+  __typename?: "SocialEntityResponseCollection";
+  data: Array<SocialEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type SocialFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<SocialFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<SocialFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<SocialFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type SocialInput = {
+  title?: InputMaybe<Scalars["String"]>;
+  url?: InputMaybe<Scalars["String"]>;
+};
+
+export type SocialRelationResponseCollection = {
+  __typename?: "SocialRelationResponseCollection";
+  data: Array<SocialEntity>;
 };
 
 export type StringFilterInput = {
@@ -1369,7 +1450,14 @@ export const GetPersonalDocument = gql`
           title
           birthday
           description
-          resume_url
+          socials {
+            data {
+              attributes {
+                title
+                url
+              }
+            }
+          }
         }
       }
     }
@@ -1438,7 +1526,17 @@ export type GetPersonalQuery = {
         title?: string | null;
         birthday?: any | null;
         description?: string | null;
-        resume_url?: string | null;
+        socials?: {
+          __typename?: "SocialRelationResponseCollection";
+          data: Array<{
+            __typename?: "SocialEntity";
+            attributes?: {
+              __typename?: "Social";
+              title?: string | null;
+              url?: string | null;
+            } | null;
+          }>;
+        } | null;
       } | null;
     } | null;
   } | null;
