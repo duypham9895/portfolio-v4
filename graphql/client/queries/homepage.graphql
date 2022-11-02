@@ -1,12 +1,10 @@
-query getPersonal {
+query homepage {
   personal(id: 1) {
     data {
       id
       attributes {
         full_name
         title
-        birthday
-        description
         socials {
           data {
             attributes {
