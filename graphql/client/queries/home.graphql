@@ -1,4 +1,4 @@
-query homepage {
+query home {
   personal(id: 1) {
     data {
       id
