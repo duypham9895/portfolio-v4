@@ -1,5 +1,3 @@
-import { gql, useQuery } from "@apollo/client";
-import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedinIn, FaGithub, FaSkype } from "react-icons/fa";
