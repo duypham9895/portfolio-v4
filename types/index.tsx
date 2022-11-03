@@ -1,5 +1,4 @@
 import { LinkProps } from "next/link";
-import { IconType } from "react-icons";
 
 export interface NavLinkProps extends LinkProps {
   activeClassName: string;
@@ -16,19 +15,6 @@ export interface IAbout {
   birthday: string;
   avatarUrl: string;
   description: string[];
-}
-export interface IContact {
-  phone: string;
-  email: string;
-  address: string;
-  addressUrl: string;
-}
-
-export interface ISkill {
-  id: string;
-  name: string;
-  experienceYears: number;
-  imageUrl: string;
 }
 
 export interface IResponseToken {

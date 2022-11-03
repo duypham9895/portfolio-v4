@@ -4,15 +4,15 @@ import FormContact from "../../components/contact/FormContact";
 
 import HeadTitle from "../../components/UI/HeadTitle";
 import { client } from "../../graphql";
-import { IContact } from "../../types";
 import {
+  ContactEntity,
   ContactsDocument,
   ContactsQuery,
   ContactsQueryVariables,
 } from "../../types/generated";
 
 type Props = {
-  contact: IContact;
+  contact: ContactEntity;
 };
 
 const Contact = ({ contact }: Props) => {
@@ -48,21 +48,9 @@ export async function getStaticProps() {
     query: ContactsDocument,
   });
 
-  const {
-    phone,
-    email,
-    address,
-    address_url: addressUrl,
-  } = data.contacts?.data[0].attributes || {};
-
   return {
     props: {
-      contact: {
-        phone,
-        email,
-        address,
-        addressUrl,
-      },
+      contact: data.contacts?.data[0],
     },
   };
 }

@@ -1,18 +1,18 @@
 import React from "react";
-import { IoLogoJavascript } from "react-icons/io";
 
-import { ISkill } from "../../types";
 import HeadTitle from "../../components/UI/HeadTitle";
 import SkillCard from "../../components/skills/SkillCard";
 import { client } from "../../graphql";
 import {
+  Skill,
+  SkillEntity,
   SkillsDocument,
   SkillsQuery,
   SkillsQueryVariables,
 } from "../../types/generated";
 
 type Props = {
-  skills: ISkill[];
+  skills: SkillEntity[];
 };
 
 const Skills = ({ skills }: Props) => {
@@ -34,8 +34,8 @@ const Skills = ({ skills }: Props) => {
                 </p>
 
                 <div className="grid lg:grid-cols-4 xl:grid-cols-4 md:grid-cols-2 grid-cols-1  gap-7">
-                  {skills.map((skill) => (
-                    <SkillCard key={skill.id} skill={skill} />
+                  {skills.map(({ id, attributes }) => (
+                    <SkillCard key={id} skill={attributes as Skill} />
                   ))}
                 </div>
               </div>
@@ -52,23 +52,9 @@ export async function getStaticProps() {
     query: SkillsDocument,
   });
 
-  const skills = data.skills?.data.map(({ id, attributes }) => {
-    const {
-      title,
-      experience_years: experienceYears,
-      image,
-    } = attributes || {};
-    return {
-      id,
-      title,
-      experienceYears,
-      imageUrl: image?.data?.attributes?.url,
-    };
-  });
-
   return {
     props: {
-      skills,
+      skills: data.skills?.data,
     },
   };
 }

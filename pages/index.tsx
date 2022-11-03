@@ -10,17 +10,32 @@ import {
   HomeDocument,
   HomeQuery,
   HomeQueryVariables,
+  PersonalEntity,
 } from "../types/generated";
 
 type Social = { [title: string]: string };
 type Props = {
-  fullName: string;
-  title: string;
-  avatarUrl: string;
-  social: Social;
+  personal: PersonalEntity;
 };
 
-const Home = ({ fullName, title, social, avatarUrl }: Props) => {
+const Home = ({ personal }: Props) => {
+  const {
+    full_name: fullName,
+    title,
+    avatar,
+    socials,
+  } = personal.attributes || {};
+  const avatarUrl = avatar?.data?.attributes?.url;
+
+  const social: Social = {};
+  socials?.data.forEach(({ attributes }) => {
+    const { title, url } = attributes || {};
+    if (!title || !url) {
+      return;
+    }
+    social[title] = url;
+  });
+
   return (
     <>
       <HeadTitle title="Home" />
@@ -32,7 +47,7 @@ const Home = ({ fullName, title, social, avatarUrl }: Props) => {
         {/* Avatar Info Start */}
         <Image
           className="rounded-full w-[250px] h-[250px] 2xl:w-[280px] 2xl:h-[280px] mx-auto object-cover"
-          src={avatarUrl}
+          src={avatarUrl as string}
           alt="my-avatar"
           width="250"
           height="250"
@@ -95,27 +110,9 @@ export async function getStaticProps() {
     query: HomeDocument,
   });
 
-  // Extract & Transform data
-  const personal = data.personal?.data?.attributes;
-  const { full_name: fullName, title } = personal || {};
-
-  const avatarUrl = personal?.avatar?.data?.attributes?.url;
-
-  const social: Social = {};
-  personal?.socials?.data.forEach(({ attributes }) => {
-    const { title, url } = attributes || {};
-    if (!title || !url) {
-      return;
-    }
-    social[title] = url;
-  });
-
   return {
     props: {
-      fullName,
-      title,
-      social,
-      avatarUrl,
+      personal: data.personal?.data,
     },
   };
 }

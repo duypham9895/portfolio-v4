@@ -4,16 +4,19 @@ import {
   FaMapMarkerAlt,
   FaMobileAlt,
 } from "react-icons/fa";
-
-import { IContact } from "../../types";
+import { ContactEntity } from "../../types/generated";
 
 type Props = {
-  contact: IContact;
+  contact: ContactEntity;
 };
 
-const DetailContact = ({
-  contact: { phone, email, address, addressUrl },
-}: Props) => {
+const DetailContact = ({ contact }: Props) => {
+  const {
+    phone,
+    email,
+    address,
+    address_url: addressUrl,
+  } = contact.attributes || {};
   return (
     <div className="w-full lg:w-[50%] xl:w-[40%] space-y-6">
       {/* Begin Phone */}
@@ -65,7 +68,7 @@ const DetailContact = ({
           <p className="text-xl font-semibold dark:text-white">Address :</p>
           <a
             className="text-gray-lite text-lg dark:text-[#A6A6A6] block"
-            href={addressUrl}
+            href={addressUrl as string}
             target="_blank"
             rel="noreferrer"
           >
