@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { PropsWithChildren } from "react";
+
 import { NavLinkProps } from "../../types";
 
-export default function NavLink({
+const NavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({
   href,
   className,
   activeClassName,
   inactiveClassName,
   children,
   ...props
-}: NavLinkProps) {
+}) => {
   const router = useRouter();
   const isActive = router.pathname === href;
   const allClassNames = `${className} ${
@@ -23,4 +25,6 @@ export default function NavLink({
       </a>
     </Link>
   );
-}
+};
+
+export default NavLink;

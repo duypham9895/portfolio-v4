@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import PortfolioContext from "./portfolio-context";
 
 // save to storage
@@ -15,11 +15,7 @@ const getFromStorage = (key: string) => {
   }
 };
 
-type Props = {
-  children?: React.ReactNode;
-};
-
-const PortfolioProvider = ({ children }: Props) => {
+const PortfolioProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [isSelectedTheme, setIsSelectedTheme] = useState(false);
   const [defaultTheme, setDefaultTheme] = useState(getFromStorage("theme"));
 

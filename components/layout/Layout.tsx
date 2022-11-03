@@ -1,11 +1,7 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import Header from "./Header";
 
-type Props = {
-  children?: React.ReactElement;
-};
-
-const Layout = ({ children }: Props) => {
+const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="bg-homeBg min-h-screen dark:bg-homeBg-dark bg-no-repeat bg-center bg-cover bg-fixed w-full md:pb-16">
       <Header />

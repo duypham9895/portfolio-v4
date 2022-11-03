@@ -4,7 +4,6 @@ export interface NavLinkProps extends LinkProps {
   activeClassName: string;
   inactiveClassName: string;
   className: string;
-  children?: React.ReactNode;
 }
 
 export interface IAbout {
