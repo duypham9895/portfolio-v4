@@ -31,7 +31,7 @@ const Contact = ({ contact }: Props) => {
               <div className="lg:flex gap-x-20 pt-4 md:pt-[40px]">
                 <DetailContact contact={contact} />
                 <div className="w-full mt-8 lg:mt-0 lg:w-[60%] xl:w-[70%]">
-                  <FormContact condition={false} />
+                  <FormContact />
                 </div>
               </div>
             </div>

@@ -3,11 +3,7 @@ import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-type Props = {
-  condition: boolean;
-};
-
-const FormContact = ({ condition }: Props) => {
+const FormContact = () => {
   const form = useRef<HTMLFormElement>(null);
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -69,11 +65,7 @@ const FormContact = ({ condition }: Props) => {
   return (
     <div
       data-aos="fade"
-      className={`${
-        condition
-          ? "mx-4 md:mx-[60px] p-4 md:p-16 dark:border-[#4f4f4f] dark:border-2"
-          : "  dark:border-[#4f4f4f] dark:border-2 mb-16  md:p-[48px]  p-4  "
-      } bg-color-810 rounded-xl dark:bg-[#111111] mb-[30px] md:mb-[60px]`}
+      className={` dark:border-[#4f4f4f] dark:border-2 md:p-[48px]  p-4  bg-color-810 rounded-xl dark:bg-[#111111] mb-[30px] md:mb-[60px]`}
     >
       <h3 className="text-4xl  ">
         <span className="text-gray-lite dark:text-[#A6A6A6] ">
