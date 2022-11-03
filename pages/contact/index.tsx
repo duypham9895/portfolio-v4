@@ -55,11 +55,6 @@ export async function getStaticProps() {
     address_url: addressUrl,
   } = data.contacts?.data[0].attributes || {};
 
-  // const contact: IContact = {
-  //   phone: "+84 963 769 049",
-  //   email: "phamanhduy.sg@gmail.com",
-  //   address: "Ho Chi Minh, Vietnam",
-  // };
   return {
     props: {
       contact: {
