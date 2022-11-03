@@ -66,7 +66,6 @@ export async function getStaticProps() {
     };
   });
 
-  console.log(skills?.length);
   return {
     props: {
       skills,
