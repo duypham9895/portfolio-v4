@@ -14,6 +14,7 @@ export interface IAbout {
   address: string;
   addressUrl: string;
   birthday: string;
+  avatarUrl: string;
   description: string[];
 }
 export interface IContact {

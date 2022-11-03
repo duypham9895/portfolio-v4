@@ -24,7 +24,15 @@ type Props = {
 };
 
 const About = ({
-  about: { phone, email, address, addressUrl, birthday, description },
+  about: {
+    phone,
+    email,
+    address,
+    addressUrl,
+    birthday,
+    avatarUrl,
+    description,
+  },
 }: Props) => {
   const formattedBirth = format(new Date(birthday), "MMM dd,yyyy");
   return (
@@ -45,7 +53,7 @@ const About = ({
                   {/* personal images for about page  */}
                   <Image
                     className="w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0"
-                    src="/images/about/avatar.jpg"
+                    src={avatarUrl}
                     alt="about-image"
                     width="330"
                     height="400"
@@ -153,7 +161,9 @@ export async function getStaticProps() {
     address_url: addressUrl,
   } = data.contacts?.data[0].attributes || {};
 
-  const { birthday, description } = data.personal?.data?.attributes || {};
+  const { birthday, description, avatar } =
+    data.personal?.data?.attributes || {};
+  const avatarUrl = avatar?.data?.attributes?.url;
 
   return {
     props: {
@@ -163,6 +173,7 @@ export async function getStaticProps() {
         address,
         addressUrl,
         birthday,
+        avatarUrl,
         description: description?.split("\n"),
       },
     },

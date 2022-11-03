@@ -1457,6 +1457,13 @@ export const AboutDocument = gql`
         attributes {
           birthday
           description
+          avatar {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }
@@ -1709,6 +1716,13 @@ export type AboutQuery = {
         __typename?: "Personal";
         birthday?: any | null;
         description?: string | null;
+        avatar?: {
+          __typename?: "UploadFileEntityResponse";
+          data?: {
+            __typename?: "UploadFileEntity";
+            attributes?: { __typename?: "UploadFile"; url: string } | null;
+          } | null;
+        } | null;
       } | null;
     } | null;
   } | null;
