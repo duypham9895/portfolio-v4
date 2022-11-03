@@ -103,12 +103,12 @@ export type Course = {
   __typename?: "Course";
   createdAt?: Maybe<Scalars["DateTime"]>;
   credential_id?: Maybe<Scalars["String"]>;
-  credential_url?: Maybe<Scalars["String"]>;
+  credential_url: Scalars["String"];
   end_date?: Maybe<Scalars["Date"]>;
-  name?: Maybe<Scalars["String"]>;
-  organization?: Maybe<Scalars["String"]>;
+  name: Scalars["String"];
+  organization: Scalars["String"];
   publishedAt?: Maybe<Scalars["DateTime"]>;
-  start_date?: Maybe<Scalars["Date"]>;
+  start_date: Scalars["Date"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
 
@@ -1891,11 +1891,11 @@ export type ResumeQuery = {
       id?: string | null;
       attributes?: {
         __typename?: "Course";
-        name?: string | null;
-        organization?: string | null;
+        name: string;
+        organization: string;
         credential_id?: string | null;
-        credential_url?: string | null;
-        start_date?: any | null;
+        credential_url: string;
+        start_date: any;
         end_date?: any | null;
       } | null;
     }>;
