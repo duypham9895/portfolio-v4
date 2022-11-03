@@ -1,6 +1,7 @@
 import AOS from "aos";
 import { useEffect } from "react";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 
 import "aos/dist/aos.css";
 import "../styles/globals.css";
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <PortfolioProvider>
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </PortfolioProvider>
   );
