@@ -1,15 +1,15 @@
 import React from "react";
 
-import { IEducation } from "../../types";
 import Card from "./Card";
 import { formatPeriodDate } from "../../utils/date";
+import { Education } from "../../types/generated";
 
 type Props = {
-  education: IEducation;
+  education: Education;
 };
 
 const EducationCard = ({
-  education: { major, university, startDate, endDate },
+  education: { degree, school, start_date: startDate, end_date: endDate },
 }: Props) => {
   const formatDateEducation = formatPeriodDate(
     startDate,
@@ -23,10 +23,8 @@ const EducationCard = ({
       <span className="text-tiny text-gray-lite dark:text-[#b7b7b7]">
         {formatDateEducation}
       </span>
-      <h3 className="text-2xl dark:text-white">{major}</h3>
-      <p className="text-tiny text-gray-lite dark:text-[#b7b7b7]">
-        {university}
-      </p>
+      <h3 className="text-2xl dark:text-white">{degree}</h3>
+      <p className="text-tiny text-gray-lite dark:text-[#b7b7b7]">{school}</p>
     </Card>
   );
 };

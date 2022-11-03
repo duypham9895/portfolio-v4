@@ -2,22 +2,22 @@ import React from "react";
 import Link from "next/link";
 import { TbExternalLink } from "react-icons/tb";
 
-import { ICourse } from "../../types";
 import Card from "./Card";
 import { formatPeriodDate } from "../../utils/date";
+import { Course } from "../../types/generated";
 
 type Props = {
-  course: ICourse;
+  course: Course;
 };
 
 const CourseCard = ({
   course: {
     name,
     organization,
-    startDate,
-    endDate,
-    credentialId,
-    credentialUrl,
+    start_date: startDate,
+    end_date: endDate,
+    credential_id: credentialId,
+    credential_url: credentialUrl,
   },
 }: Props) => {
   const formatDateCourse = formatPeriodDate(
@@ -39,7 +39,7 @@ const CourseCard = ({
           Credential ID: {credentialId}
         </p>
         <button className="bg-gradient-to-r from-[#FA5252] to-[#DD2476] duration-200 transition ease-linear hover:bg-gradient-to-l px-4 py-2 text-base text-white rounded-[35px]">
-          <Link href={credentialUrl} passHref>
+          <Link href={credentialUrl as string} passHref>
             <a
               target="_blank"
               rel="noopener noreferrer"

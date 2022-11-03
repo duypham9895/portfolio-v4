@@ -1,15 +1,22 @@
 import React from "react";
 
-import { IExperience } from "../../types";
 import Card from "./Card";
 import { formatPeriodDate } from "../../utils/date";
+import { Experience } from "../../types/generated";
 
 type Props = {
-  experience: IExperience;
+  experience: Experience;
 };
 
 const ExperienceCard = ({
-  experience: { title, companyName, startDate, endDate, summary },
+  experience: {
+    job_title: title,
+    company_name: companyName,
+    company_url: companyUrl,
+    start_date: startDate,
+    end_date: endDate,
+    description,
+  },
 }: Props) => {
   const formatDateWork = formatPeriodDate(
     startDate,
@@ -17,6 +24,7 @@ const ExperienceCard = ({
     "Present",
     "MMM yyyy"
   );
+  const summary = description?.split("\n") as string[];
 
   return (
     <Card>
@@ -24,7 +32,14 @@ const ExperienceCard = ({
         {formatDateWork}
       </span>
       <h3 className="text-3xl dark:text-white">{title}</h3>
-      <p className="text-xl dark:text-[#b7b7b7]">{companyName}</p>
+      <a
+        className="text-xl dark:text-[#b7b7b7] block"
+        href={companyUrl as string}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {companyName}
+      </a>
 
       <ul className="list-disc space-y-2 ml-10 py-2 text-justify pr-5 dark:text-white">
         {summary.map((content, i) => (

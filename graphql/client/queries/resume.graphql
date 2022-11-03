@@ -1,0 +1,41 @@
+query resume {
+  experiences {
+    data {
+      id
+      attributes {
+        job_title
+        company_name
+        company_url
+        start_date
+        end_date
+        description
+      }
+    }
+  }
+
+  courses {
+    data {
+      id
+      attributes {
+        name
+        organization
+        credential_id
+        credential_url
+        start_date
+        end_date
+      }
+    }
+  }
+
+  educations {
+    data {
+      id
+      attributes {
+        school
+        degree
+        start_date
+        end_date
+      }
+    }
+  }
+}

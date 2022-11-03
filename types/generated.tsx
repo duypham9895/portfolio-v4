@@ -1630,6 +1630,87 @@ export function useHomeLazyQuery(
 export type HomeQueryHookResult = ReturnType<typeof useHomeQuery>;
 export type HomeLazyQueryHookResult = ReturnType<typeof useHomeLazyQuery>;
 export type HomeQueryResult = Apollo.QueryResult<HomeQuery, HomeQueryVariables>;
+export const ResumeDocument = gql`
+  query resume {
+    experiences {
+      data {
+        id
+        attributes {
+          job_title
+          company_name
+          company_url
+          start_date
+          end_date
+          description
+        }
+      }
+    }
+    courses {
+      data {
+        id
+        attributes {
+          name
+          organization
+          credential_id
+          credential_url
+          start_date
+          end_date
+        }
+      }
+    }
+    educations {
+      data {
+        id
+        attributes {
+          school
+          degree
+          start_date
+          end_date
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useResumeQuery__
+ *
+ * To run a query within a React component, call `useResumeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useResumeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useResumeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useResumeQuery(
+  baseOptions?: Apollo.QueryHookOptions<ResumeQuery, ResumeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ResumeQuery, ResumeQueryVariables>(
+    ResumeDocument,
+    options
+  );
+}
+export function useResumeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ResumeQuery, ResumeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ResumeQuery, ResumeQueryVariables>(
+    ResumeDocument,
+    options
+  );
+}
+export type ResumeQueryHookResult = ReturnType<typeof useResumeQuery>;
+export type ResumeLazyQueryHookResult = ReturnType<typeof useResumeLazyQuery>;
+export type ResumeQueryResult = Apollo.QueryResult<
+  ResumeQuery,
+  ResumeQueryVariables
+>;
 export const SkillsDocument = gql`
   query skills {
     skills(pagination: { pageSize: 20 }, sort: ["id"]) {
@@ -1780,6 +1861,58 @@ export type HomeQuery = {
         } | null;
       } | null;
     } | null;
+  } | null;
+};
+
+export type ResumeQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ResumeQuery = {
+  __typename?: "Query";
+  experiences?: {
+    __typename?: "ExperienceEntityResponseCollection";
+    data: Array<{
+      __typename?: "ExperienceEntity";
+      id?: string | null;
+      attributes?: {
+        __typename?: "Experience";
+        job_title: string;
+        company_name: string;
+        company_url?: string | null;
+        start_date: any;
+        end_date?: any | null;
+        description?: string | null;
+      } | null;
+    }>;
+  } | null;
+  courses?: {
+    __typename?: "CourseEntityResponseCollection";
+    data: Array<{
+      __typename?: "CourseEntity";
+      id?: string | null;
+      attributes?: {
+        __typename?: "Course";
+        name?: string | null;
+        organization?: string | null;
+        credential_id?: string | null;
+        credential_url?: string | null;
+        start_date?: any | null;
+        end_date?: any | null;
+      } | null;
+    }>;
+  } | null;
+  educations?: {
+    __typename?: "EducationEntityResponseCollection";
+    data: Array<{
+      __typename?: "EducationEntity";
+      id?: string | null;
+      attributes?: {
+        __typename?: "Education";
+        school?: string | null;
+        degree?: string | null;
+        start_date?: any | null;
+        end_date?: any | null;
+      } | null;
+    }>;
   } | null;
 };
 

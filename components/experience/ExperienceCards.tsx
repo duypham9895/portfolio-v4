@@ -1,20 +1,20 @@
 import React from "react";
 import { MdOutlineBusinessCenter } from "react-icons/md";
+import { Experience, ExperienceEntity } from "../../types/generated";
 
-import { IExperience } from "../../types";
 import ExperienceCard from "./ExperienceCard";
 import Title from "./Title";
 
 type Props = {
-  listExperience: IExperience[];
+  experiences: ExperienceEntity[];
 };
 
-const ExperienceCards = ({ listExperience }: Props) => {
+const ExperienceCards = ({ experiences }: Props) => {
   return (
     <>
       <Title content="Work Experience" icon={MdOutlineBusinessCenter} />
-      {listExperience.map((experience) => (
-        <ExperienceCard key={experience.id} experience={experience} />
+      {experiences.map(({ id, attributes }) => (
+        <ExperienceCard key={id} experience={attributes as Experience} />
       ))}
     </>
   );

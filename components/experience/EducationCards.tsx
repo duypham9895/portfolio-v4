@@ -2,19 +2,19 @@ import React from "react";
 import { MdOutlineSchool } from "react-icons/md";
 
 import Title from "./Title";
-import { IEducation } from "../../types";
 import EducationCard from "./EducationCard";
+import { Education, EducationEntity } from "../../types/generated";
 
 type Props = {
-  educations: IEducation[];
+  educations: EducationEntity[];
 };
 
 const EducationCards = ({ educations }: Props) => {
   return (
     <>
       <Title content="Education" icon={MdOutlineSchool} />
-      {educations.map((education) => (
-        <EducationCard key={education.id} education={education} />
+      {educations.map(({ id, attributes }) => (
+        <EducationCard key={id} education={attributes as Education} />
       ))}
     </>
   );
