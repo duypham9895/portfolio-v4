@@ -16,10 +16,11 @@ type Social = { [title: string]: string };
 type Props = {
   fullName: string;
   title: string;
+  avatarUrl: string;
   social: Social;
 };
 
-const Home = ({ fullName, title, social }: Props) => {
+const Home = ({ fullName, title, social, avatarUrl }: Props) => {
   return (
     <>
       <HeadTitle title="Home" />
@@ -31,7 +32,7 @@ const Home = ({ fullName, title, social }: Props) => {
         {/* Avatar Info Start */}
         <Image
           className="rounded-full w-[250px] h-[250px] 2xl:w-[280px] 2xl:h-[280px] mx-auto object-cover"
-          src="/images/about/avatar.jpg"
+          src={avatarUrl}
           alt="my-avatar"
           width="250"
           height="250"
@@ -98,6 +99,8 @@ export async function getStaticProps() {
   const personal = data.personal?.data?.attributes;
   const { full_name: fullName, title } = personal || {};
 
+  const avatarUrl = personal?.avatar?.data?.attributes?.url;
+
   const social: Social = {};
   personal?.socials?.data.forEach(({ attributes }) => {
     const { title, url } = attributes || {};
@@ -112,6 +115,7 @@ export async function getStaticProps() {
       fullName,
       title,
       social,
+      avatarUrl,
     },
   };
 }

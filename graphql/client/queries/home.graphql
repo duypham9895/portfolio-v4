@@ -5,6 +5,13 @@ query home {
       attributes {
         full_name
         title
+        avatar {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
         socials {
           data {
             attributes {

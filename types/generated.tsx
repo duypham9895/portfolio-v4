@@ -1569,6 +1569,13 @@ export const HomeDocument = gql`
         attributes {
           full_name
           title
+          avatar {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
           socials {
             data {
               attributes {
@@ -1739,6 +1746,13 @@ export type HomeQuery = {
         __typename?: "Personal";
         full_name?: string | null;
         title?: string | null;
+        avatar?: {
+          __typename?: "UploadFileEntityResponse";
+          data?: {
+            __typename?: "UploadFileEntity";
+            attributes?: { __typename?: "UploadFile"; url: string } | null;
+          } | null;
+        } | null;
         socials?: {
           __typename?: "SocialRelationResponseCollection";
           data: Array<{
