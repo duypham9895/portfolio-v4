@@ -56,6 +56,7 @@ export async function getStaticProps() {
     props: {
       skills: data.skills?.data,
     },
+    revalidate: 10,
   };
 }
 

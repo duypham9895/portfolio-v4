@@ -11,29 +11,31 @@ import "slick-carousel/slick/slick.css";
 import format from "date-fns/format";
 
 import HeadTitle from "../../components/UI/HeadTitle";
-import { IAbout } from "../../types";
 import {
   AboutDocument,
   AboutQuery,
   AboutQueryVariables,
+  ContactEntity,
+  PersonalEntity,
 } from "../../types/generated";
 import { client } from "../../graphql";
 
 type Props = {
-  about: IAbout;
+  contact: ContactEntity;
+  personal: PersonalEntity;
 };
 
-const About = ({
-  about: {
+const About = ({ contact, personal }: Props) => {
+  const {
     phone,
     email,
     address,
-    addressUrl,
-    birthday,
-    avatarUrl,
-    description,
-  },
-}: Props) => {
+    address_url: addressUrl,
+  } = contact.attributes || {};
+
+  const { birthday, description, avatar } = personal?.attributes || {};
+  const avatarUrl = avatar?.data?.attributes?.url;
+
   const formattedBirth = format(new Date(birthday), "MMM dd,yyyy");
   return (
     <>
@@ -53,7 +55,7 @@ const About = ({
                   {/* personal images for about page  */}
                   <Image
                     className="w-full md:w-[330px] md:h-[400px] object-cover overflow-hidden rounded-[35px] mb-3 md:mb-0"
-                    src={avatarUrl}
+                    src={avatarUrl as string}
                     alt="about-image"
                     width="330"
                     height="400"
@@ -66,7 +68,7 @@ const About = ({
                       Who Am I?
                     </h3>
                     <ul className="text-gray-lite dark:text-color-910 leading-7 space-y-3">
-                      {description.map((content, i) => (
+                      {description?.split("\n").map((content, i) => (
                         <li key={i}>{content}</li>
                       ))}
                     </ul>
@@ -110,7 +112,7 @@ const About = ({
                         </span>
                         <a
                           className="space-y-1"
-                          href={addressUrl}
+                          href={addressUrl as string}
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -154,29 +156,15 @@ export async function getStaticProps() {
     query: AboutDocument,
   });
 
-  const {
-    phone,
-    email,
-    address,
-    address_url: addressUrl,
-  } = data.contacts?.data[0].attributes || {};
-
-  const { birthday, description, avatar } =
-    data.personal?.data?.attributes || {};
-  const avatarUrl = avatar?.data?.attributes?.url;
+  const contact = data.contacts?.data[0];
+  const personal = data.personal?.data;
 
   return {
     props: {
-      about: {
-        phone,
-        email,
-        address,
-        addressUrl,
-        birthday,
-        avatarUrl,
-        description: description?.split("\n"),
-      },
+      contact,
+      personal,
     },
+    revalidate: 60,
   };
 }
 
