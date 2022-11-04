@@ -4,7 +4,7 @@ export const formatPeriodDate = (
   startDate: string,
   endDate: string | null,
   replaceNullEndDate: string,
-  formatType: string
+  formatType: string,
 ): string => {
   const formattedStartDate = format(new Date(startDate), formatType);
   const formattedEndDate = endDate
