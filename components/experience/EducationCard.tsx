@@ -15,7 +15,7 @@ const EducationCard = ({
     startDate,
     endDate,
     "Present",
-    "MMM yyyy"
+    "MMM yyyy",
   );
 
   return (

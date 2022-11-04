@@ -6,9 +6,7 @@ import Link from "next/link";
 import SwitchTheme from "../UI/SwitchTheme";
 import MobileMenuItems from "../menu/MobileMenuItems";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (

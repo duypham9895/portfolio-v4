@@ -17,7 +17,7 @@ const fetchToken = async (): Promise<string> => {
       headers: {
         "Content-Type": "application/json",
       },
-    }
+    },
   );
   return data.jwt;
 };

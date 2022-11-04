@@ -24,7 +24,7 @@ const CourseCard = ({
     startDate,
     endDate,
     "No Expiration Date",
-    "MMM yyyy"
+    "MMM yyyy",
   );
 
   return (
@@ -39,7 +39,7 @@ const CourseCard = ({
           Credential ID: {credentialId}
         </p>
         <button className="bg-gradient-to-r from-[#FA5252] to-[#DD2476] duration-200 transition ease-linear hover:bg-gradient-to-l px-4 py-2 text-base text-white rounded-[35px]">
-          <Link href={credentialUrl as string} passHref>
+          <Link href={credentialUrl} passHref>
             <a
               target="_blank"
               rel="noopener noreferrer"
