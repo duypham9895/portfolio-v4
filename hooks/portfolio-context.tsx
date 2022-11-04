@@ -1,17 +1,13 @@
 import React from "react";
 
-const getFromStorage = (key: string) => {
-  if (typeof window !== "undefined") {
-    return window.localStorage.getItem(key);
-  }
+type PortfolioContextState = {
+  handleTheme: (theme: string) => void;
+  isSelectedTheme: boolean;
+  defaultTheme: string | null | undefined;
 };
 
-const initialState = {
-  handleTheme: (theme: string): void => {},
-  isSelectedTheme: false,
-  defaultTheme: getFromStorage("theme"),
-};
-
-const PortfolioContext = React.createContext(initialState);
+const PortfolioContext = React.createContext<PortfolioContextState>(
+  {} as PortfolioContextState,
+);
 
 export default PortfolioContext;

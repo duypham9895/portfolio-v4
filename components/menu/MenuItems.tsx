@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 // Icons
-import { FaBlogger, FaCode, FaRegUser } from "react-icons/fa";
+import { FaCode, FaRegUser } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
 import { RiContactsBookLine } from "react-icons/ri";
 
@@ -28,12 +28,6 @@ const MENU_ITEMS = [
     link: "/skills",
     icon: <FaCode />,
   },
-  // {
-  //   id: "04",
-  //   name: "Blogs",
-  //   link: "/blogs",
-  //   icon: <FaBlogger />,
-  // },
   {
     id: "05",
     name: "Contact",
