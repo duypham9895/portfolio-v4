@@ -60,7 +60,6 @@ export async function getStaticProps() {
       experiences,
       educations,
     },
-    revalidate: 60,
   };
 }
 

@@ -165,7 +165,6 @@ export async function getStaticProps() {
       contact,
       personal,
     },
-    revalidate: 60,
   };
 }
 
