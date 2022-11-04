@@ -9,6 +9,7 @@ const NavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({
   className,
   activeClassName,
   inactiveClassName,
+  isExternalLink,
   children,
   ...props
 }) => {
@@ -20,7 +21,11 @@ const NavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({
 
   return (
     <Link href={href}>
-      <a className={allClassNames} {...props}>
+      <a
+        className={allClassNames}
+        {...props}
+        target={isExternalLink ? "_blank" : "_self"}
+      >
         {children}
       </a>
     </Link>

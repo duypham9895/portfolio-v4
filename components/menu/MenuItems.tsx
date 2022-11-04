@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 // Icons
-import { FaCode, FaRegUser } from "react-icons/fa";
+import { FaBlogger, FaCode, FaRegUser } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
 import { RiContactsBookLine } from "react-icons/ri";
 
@@ -27,6 +27,12 @@ const MENU_ITEMS = [
     name: "Skills",
     link: "/skills",
     icon: <FaCode />,
+  },
+  {
+    id: "04",
+    name: "Blogs",
+    link: "https://duyedwardpham.medium.com",
+    icon: <FaBlogger />,
   },
   {
     id: "05",
@@ -75,6 +81,7 @@ const MenuItems = ({ isOpenMenu, menuHandler }: Props) => {
                 : "rounded-md cursor-pointer font-poppins bg-white text-gray-lite"
             }`}
             href={link}
+            isExternalLink={link.includes("http")}
           >
             <span className="mr-2 text-xl">{icon}</span> {name}
           </NavLink>

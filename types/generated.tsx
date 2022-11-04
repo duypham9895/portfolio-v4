@@ -51,11 +51,11 @@ export type BooleanFilterInput = {
 
 export type Contact = {
   __typename?: "Contact";
-  address?: Maybe<Scalars["String"]>;
+  address: Scalars["String"];
   address_url?: Maybe<Scalars["String"]>;
   createdAt?: Maybe<Scalars["DateTime"]>;
-  email?: Maybe<Scalars["String"]>;
-  phone?: Maybe<Scalars["String"]>;
+  email: Scalars["String"];
+  phone: Scalars["String"];
   publishedAt?: Maybe<Scalars["DateTime"]>;
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
@@ -206,12 +206,12 @@ export type DateTimeFilterInput = {
 export type Education = {
   __typename?: "Education";
   createdAt?: Maybe<Scalars["DateTime"]>;
-  degree?: Maybe<Scalars["String"]>;
+  degree: Scalars["String"];
   description?: Maybe<Scalars["String"]>;
   end_date?: Maybe<Scalars["Date"]>;
   publishedAt?: Maybe<Scalars["DateTime"]>;
-  school?: Maybe<Scalars["String"]>;
-  start_date?: Maybe<Scalars["Date"]>;
+  school: Scalars["String"];
+  start_date: Scalars["Date"];
   updatedAt?: Maybe<Scalars["DateTime"]>;
 };
 
@@ -1782,9 +1782,9 @@ export type AboutQuery = {
       __typename?: "ContactEntity";
       attributes?: {
         __typename?: "Contact";
-        phone?: string | null;
-        email?: string | null;
-        address?: string | null;
+        phone: string;
+        email: string;
+        address: string;
         address_url?: string | null;
       } | null;
     }>;
@@ -1819,9 +1819,9 @@ export type ContactsQuery = {
       __typename?: "ContactEntity";
       attributes?: {
         __typename?: "Contact";
-        phone?: string | null;
-        email?: string | null;
-        address?: string | null;
+        phone: string;
+        email: string;
+        address: string;
         address_url?: string | null;
       } | null;
     }>;
@@ -1907,9 +1907,9 @@ export type ResumeQuery = {
       id?: string | null;
       attributes?: {
         __typename?: "Education";
-        school?: string | null;
-        degree?: string | null;
-        start_date?: any | null;
+        school: string;
+        degree: string;
+        start_date: any;
         end_date?: any | null;
       } | null;
     }>;
