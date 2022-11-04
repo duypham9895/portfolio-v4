@@ -1486,21 +1486,21 @@ export const AboutDocument = gql`
  * });
  */
 export function useAboutQuery(
-  baseOptions?: Apollo.QueryHookOptions<AboutQuery, AboutQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<AboutQuery, AboutQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<AboutQuery, AboutQueryVariables>(
     AboutDocument,
-    options
+    options,
   );
 }
 export function useAboutLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<AboutQuery, AboutQueryVariables>
+  baseOptions?: Apollo.LazyQueryHookOptions<AboutQuery, AboutQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<AboutQuery, AboutQueryVariables>(
     AboutDocument,
-    options
+    options,
   );
 }
 export type AboutQueryHookResult = ReturnType<typeof useAboutQuery>;
@@ -1540,24 +1540,24 @@ export const ContactsDocument = gql`
  * });
  */
 export function useContactsQuery(
-  baseOptions?: Apollo.QueryHookOptions<ContactsQuery, ContactsQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<ContactsQuery, ContactsQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ContactsQuery, ContactsQueryVariables>(
     ContactsDocument,
-    options
+    options,
   );
 }
 export function useContactsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     ContactsQuery,
     ContactsQueryVariables
-  >
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<ContactsQuery, ContactsQueryVariables>(
     ContactsDocument,
-    options
+    options,
   );
 }
 export type ContactsQueryHookResult = ReturnType<typeof useContactsQuery>;
@@ -1613,18 +1613,18 @@ export const HomeDocument = gql`
  * });
  */
 export function useHomeQuery(
-  baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<HomeQuery, HomeQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<HomeQuery, HomeQueryVariables>(HomeDocument, options);
 }
 export function useHomeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>
+  baseOptions?: Apollo.LazyQueryHookOptions<HomeQuery, HomeQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<HomeQuery, HomeQueryVariables>(
     HomeDocument,
-    options
+    options,
   );
 }
 export type HomeQueryHookResult = ReturnType<typeof useHomeQuery>;
@@ -1688,21 +1688,21 @@ export const ResumeDocument = gql`
  * });
  */
 export function useResumeQuery(
-  baseOptions?: Apollo.QueryHookOptions<ResumeQuery, ResumeQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<ResumeQuery, ResumeQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ResumeQuery, ResumeQueryVariables>(
     ResumeDocument,
-    options
+    options,
   );
 }
 export function useResumeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<ResumeQuery, ResumeQueryVariables>
+  baseOptions?: Apollo.LazyQueryHookOptions<ResumeQuery, ResumeQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<ResumeQuery, ResumeQueryVariables>(
     ResumeDocument,
-    options
+    options,
   );
 }
 export type ResumeQueryHookResult = ReturnType<typeof useResumeQuery>;
@@ -1749,21 +1749,21 @@ export const SkillsDocument = gql`
  * });
  */
 export function useSkillsQuery(
-  baseOptions?: Apollo.QueryHookOptions<SkillsQuery, SkillsQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<SkillsQuery, SkillsQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<SkillsQuery, SkillsQueryVariables>(
     SkillsDocument,
-    options
+    options,
   );
 }
 export function useSkillsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<SkillsQuery, SkillsQueryVariables>
+  baseOptions?: Apollo.LazyQueryHookOptions<SkillsQuery, SkillsQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<SkillsQuery, SkillsQueryVariables>(
     SkillsDocument,
-    options
+    options,
   );
 }
 export type SkillsQueryHookResult = ReturnType<typeof useSkillsQuery>;
