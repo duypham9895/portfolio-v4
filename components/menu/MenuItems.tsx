@@ -28,12 +28,12 @@ const MENU_ITEMS = [
     link: "/skills",
     icon: <FaCode />,
   },
-  // {
-  //   id: "04",
-  //   name: "Blogs",
-  //   link: "/blogs",
-  //   icon: <FaBlogger />,
-  // },
+  {
+    id: "04",
+    name: "Blogs",
+    link: "/blogs",
+    icon: <FaBlogger />,
+  },
   {
     id: "05",
     name: "Contact",
