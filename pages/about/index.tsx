@@ -59,6 +59,7 @@ const About = ({ contact, personal }: Props) => {
                     alt="about-image"
                     width="330"
                     height="400"
+                    priority={true}
                   />
                 </div>
                 <div className="col-span-12 md:col-span-8 space-y-3">

@@ -51,6 +51,7 @@ const Home = ({ personal }: Props) => {
           alt="my-avatar"
           width="250"
           height="250"
+          priority={true}
         />
         <h3 className="mt-6 mb-1 text-5xl font-semibold dark:text-white">
           {fullName}
