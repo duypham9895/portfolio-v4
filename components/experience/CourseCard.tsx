@@ -24,7 +24,7 @@ const CourseCard = ({
     startDate,
     endDate,
     "No Expiration Date",
-    "MMM yyyy"
+    "MMM yyyy",
   );
 
   return (

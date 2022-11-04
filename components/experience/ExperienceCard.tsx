@@ -22,7 +22,7 @@ const ExperienceCard = ({
     startDate,
     endDate,
     "Present",
-    "MMM yyyy"
+    "MMM yyyy",
   );
   const summary = description?.split("\n") as string[];
 
