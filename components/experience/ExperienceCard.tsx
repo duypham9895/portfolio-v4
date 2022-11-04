@@ -33,7 +33,7 @@ const ExperienceCard = ({
       </span>
       <h3 className="text-3xl dark:text-white">{title}</h3>
       <a
-        className="text-xl dark:text-[#b7b7b7] block"
+        className="text-xl dark:text-[#b7b7b7] block hover:text-[#FA5252] dark:hover:text-[#FA5252]"
         href={companyUrl as string}
         target="_blank"
         rel="noopener noreferrer"

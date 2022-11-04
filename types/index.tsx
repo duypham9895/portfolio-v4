@@ -4,6 +4,7 @@ export interface NavLinkProps extends LinkProps {
   activeClassName: string;
   inactiveClassName: string;
   className: string;
+  isExternalLink: boolean;
 }
 
 export interface IAbout {
