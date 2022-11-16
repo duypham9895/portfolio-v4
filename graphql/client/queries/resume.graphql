@@ -13,7 +13,7 @@ query resume {
     }
   }
 
-  courses {
+  courses(sort: ["start_date:desc"]) {
     data {
       id
       attributes {

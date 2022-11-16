@@ -1645,7 +1645,7 @@ export const ResumeDocument = gql`
         }
       }
     }
-    courses {
+    courses(sort: ["start_date:desc"]) {
       data {
         id
         attributes {
