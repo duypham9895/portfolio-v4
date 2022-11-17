@@ -96,7 +96,7 @@ const Home = ({ personal }: Props) => {
         <button className="flex items-center bg-gradient-to-r from-[#FA5252] to-[#DD2476] duration-200 transition ease-linear hover:bg-gradient-to-l px-8 py-3 text-lg text-white rounded-[35px] mt-6">
           <Link href={`${social[TITLE_SOCIAL.RESUME]}`} passHref>
             <a target="_blank" rel="noopener noreferrer">
-              View my Resume
+              Download my Resume
             </a>
           </Link>
         </button>
